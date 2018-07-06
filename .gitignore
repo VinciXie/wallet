@@ -57,4 +57,3 @@ buck-out/
 
 /doc
 yarn.lock
-package-lock.json
