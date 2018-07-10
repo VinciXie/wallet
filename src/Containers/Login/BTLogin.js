@@ -33,7 +33,8 @@ export default class BTLogin extends PureComponent{
             let keystore = JSON.parse(this.state.keystore)
             try{
                 let privateKey = Kesytore.recover(this.state.password,keystore)
-                createAccount({account:keystore.account,keystore:this.state.keystore})
+                let accountInfo = {account:keystore.account,keystore:this.state.keystore}
+                createAccount(accountInfo)
                 Storage.save({key:'account',data:{
                     account:keystore.account,
                     data:{

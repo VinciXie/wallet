@@ -16,7 +16,7 @@ export default class BTProfile extends PureComponent{
                         <Text style={{fontSize:24,color:'white',marginLeft:24}}>Chirst-2008</Text>
                     </View>
                     <View style={{marginTop:30,flex:1,flexDirection:'row',justifyContent:'center'}}>
-                        <View style={{width:60,height:68,marginRight:45}}><CardItem title="管理钱包" onPress={()=>alert('管理钱包')}/></View>
+                        <View style={{width:60,height:68,marginRight:45}}><CardItem title="管理钱包" onPress={()=>{Actions.push('walletList')}}/></View>
                         <View style={{width:60,height:68,marginLeft:45}}><CardItem title="交易记录" onPress={()=>{Actions.push('transferRecode')}}/></View>
                     </View>
                 </View>

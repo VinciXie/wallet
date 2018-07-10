@@ -16,10 +16,10 @@ export default class BTCard extends PureComponent{
                 </View>
                 <View style={styles.centerStyle}>
                     <Text style={{color:'white'}}>我的资产</Text>
-                    <Text style={styles.textStyle}>≈￥435435</Text>
+                    <Text style={styles.textStyle}>≈￥{this.props.totalCount.toFixed(2)}</Text>
                 </View>
                 <View style={styles.bottomStyle}>
-                    <TouchableOpacity onPress={()=>{Actions.push('qrcode')}}>
+                    <TouchableOpacity onPress={()=>{Actions.push('qrcode',{account:this.props.account})}}>
                         <Image style={styles.iconStyle} source={require('../../Public/img/qrcode.png')}></Image>
                     </TouchableOpacity>
                 </View>

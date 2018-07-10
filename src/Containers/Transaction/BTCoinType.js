@@ -2,16 +2,21 @@ import React,{PureComponent} from 'react'
 import {View,StyleSheet,FlatList,Text,TouchableOpacity,Image,ImageBackground,Modal} from 'react-native'
 import { Actions } from 'react-native-router-flux';
 
+const COIN_TYPES =  [
+    {name:'BTO'},
+    {name:'DTO'}
+]
+
 export default class BTCoinType extends PureComponent{
     constructor(props){
         super(props)
 
         this.state = {
-            data:[
+            coinType:[
                 {name:'BTO'},
-                {name:'BTO'},
-                {name:'BTO'},
-            ]
+                {name:'DTO'}
+            ],
+            selected:0
         }
     }
 
@@ -19,7 +24,7 @@ export default class BTCoinType extends PureComponent{
         return(
             <View>
                 <View style={{height:44,justifyContent:'space-between',flexDirection:'row',alignItems:'center'}}>
-                    <TouchableOpacity style={styles.backImageStyle} onPress={()=>{this.props.onPress()}}>
+                    <TouchableOpacity style={styles.backImageStyle} onPress={()=>{this.props.onPress(COIN_TYPES[this.state.selected].name)}}>
                         <Image source={require('../../Public/img/back_arr_black.png')} style={{width:23,height:10}}/>
                     </TouchableOpacity>
                     <Text style={{fontSize:18}}>选择币种</Text>
@@ -30,23 +35,27 @@ export default class BTCoinType extends PureComponent{
         )
     }
 
-    listItem(item){
+    listItem(item,index){
+        let selectStyle = index== this.state.selected ? {width:20,height:14} : {width:0,height:0}
+
         return(
-            <View style={styles.listItemStyle}>
-                <Text style={{fontSize:20}}>{item.name}</Text>
-                <Image source={require('../../Public/img/select_success.png')} style={{width:20,height:14}}/>
-            </View>
+            <TouchableOpacity onPress={()=>this.setState({selected:index})}>
+                <View style={styles.listItemStyle}>
+                    <Text style={{fontSize:20}}>{item.name}</Text>
+                    <Image source={require('../../Public/img/select_success.png')} style={selectStyle}/>
+                </View>
+            </TouchableOpacity>
         )
     }
 
     render(){
         return(
-            <TouchableOpacity onPress={()=>{this.props.onPress()}} style={{flex:1}}>
+            <TouchableOpacity onPress={()=>{this.props.onPress(COIN_TYPES[this.state.selected].name)}} style={{flex:1}}>
                 <ImageBackground source={require('../../Public/img/alpha_bg.png')} style={styles.container}>
                     <View style={{height:445,backgroundColor:'white'}}>
                         <FlatList
-                            data={this.state.data}
-                            renderItem={({item})=>this.listItem(item)}
+                            data={COIN_TYPES}
+                            renderItem={({item,index})=>this.listItem(item,index)}
                             ListHeaderComponent={this.listHeader()}
                         />
                     </View>

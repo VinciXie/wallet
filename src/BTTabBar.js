@@ -10,7 +10,7 @@ export default class BTTabbar extends PureComponent{
         super(props)
 
         this.state = {
-            selected:'asset'
+            selected:'home'
         }
     }
 
@@ -21,9 +21,9 @@ export default class BTTabbar extends PureComponent{
     render(){
         return(
             <TabBar>
-                <TabBarItem title="首页" icon={require('./Public/img/file.png')} selectedIcon={require('./Public/img/file_highlight.png')} key="tbhome" selected={this.state.selected =='home'} onPress={()=>{this.selectTab('home')}}><BTHome/></TabBarItem>
-                <TabBarItem title="资产" icon={require('./Public/img/asset.png')} selectedIcon={require('./Public/img/asset_highlight.png')} key="asset" selected={this.state.selected =='asset'} onPress={()=>{this.selectTab('asset')}}><BTAsset/></TabBarItem>
-                <TabBarItem title="我的" icon={require('./Public/img/profile.png')} selectedIcon={require('./Public/img/profile_highlight.png')} key="profile" selected={this.state.selected =='profile'} onPress={()=>{this.selectTab('profile')}}><BTProfile/></TabBarItem>
+                <TabBarItem title="首页" icon={require('./Public/img/file.png')} selectedIcon={require('./Public/img/file_highlight.png')} key="tbhome" selected={this.state.selected =='home'} onPress={()=>{this.selectTab('home')}}><BTHome selected={this.state.selected =='home'}/></TabBarItem>
+                {/* <TabBarItem title="资产" icon={require('./Public/img/asset.png')} selectedIcon={require('./Public/img/asset_highlight.png')} key="asset" selected={this.state.selected =='asset'} onPress={()=>{this.selectTab('asset')}}><BTAsset/></TabBarItem> */}
+                <TabBarItem title="我的" icon={require('./Public/img/profile.png')} selectedIcon={require('./Public/img/profile_highlight.png')} key="profile" selected={this.state.selected =='profile'} onPress={()=>{this.selectTab('profile')}}><BTProfile selected={this.state.selected =='profile'}/></TabBarItem>
             </TabBar>
         )
     }

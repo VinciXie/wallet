@@ -94,5 +94,5 @@ export default class JLRefreshFlatList extends PureComponent{
 
 const styles = StyleSheet.create({
     container:{flex:1},
-    footerRefreshStyle:{height:49,marginTop:10,flexDirection:'row',justifyContent:'center',alignItems:'center'}
+    footerRefreshStyle:{height:49,marginTop:10,flexDirection:'row',justifyContent:'center',alignItems:'center',backgroundColor:'rgba(142,142,147,0.10)'}
 })

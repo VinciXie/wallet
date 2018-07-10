@@ -15,6 +15,7 @@ import BTTransferRecode from './Containers/Profile/subviews/BTTransferRecode'
 import BTTransferDetail from './Containers/Profile/subviews/BTTransferDetail'
 import BTChangeLanguage from './Containers/Profile/subviews/BTChangeLanguage'
 import BTWalletDetail from './Containers/Wallets/BTWalletDetail'
+import BTWalletList from './Containers/Wallets/BTWalletList'
 
 export default class BTRouter extends PureComponent{
     constructor(props){
@@ -25,12 +26,12 @@ export default class BTRouter extends PureComponent{
         return(
             <Router>
                 <Scene key="root">
-                    {/* <Scene key="initView" hideNavBar={true} component={BTInitView}/> */}
-                    {/* <Scene key="createAccount" component={BTCreateAccount}  navTransparent={true} renderLeftButton={<BTNavLeftButton backArr='white'/>}/> */}
+                    <Scene key="initView" hideNavBar={true} component={BTInitView}/>
+                    <Scene key="createAccount" component={BTCreateAccount}  navTransparent={true} renderLeftButton={<BTNavLeftButton backArr='white'/>}/>
                     <Scene key="createAccountSuccess" component={BTCreateSuccess}  navTransparent={true} renderLeftButton={<BTNavLeftButton backArr='white'/>}/>
                     <Scene key="BTBackUpKeystore" naviga component={BTBackUpKeystore}  navTransparent={true} renderLeftButton={<BTNavLeftButton backArr='white'/>}/>
                     <Scene key="home" component={BTTabBar} hideNavBar={true} initial={true}/>
-                    {/* <Scene key="login" component={BTLogin} back={false}  navTransparent={true} renderLeftButton={<BTNavLeftButton/>}/> */}
+                    <Scene key="login" component={BTLogin} back={false}  navTransparent={true} renderLeftButton={<BTNavLeftButton/>}/>
                     <Scene key="qrcode" component={BTQRCode} back={false}  navTransparent={true} renderLeftButton={<BTNavLeftButton/>}/>
                     <Scene key="transaction" component={BTTransaction} hideNavBar={true}/>
                     <Scene key="qrscaner" component={BTQRScaner} back={false}  navTransparent={true} renderLeftButton={<BTNavLeftButton/>}/>
@@ -39,6 +40,7 @@ export default class BTRouter extends PureComponent{
                     <Scene key="transferDetail" component={BTTransferDetail} back={false}  navTransparent={true} renderLeftButton={<BTNavLeftButton/>}/>
                     <Scene key="changeLanguage" component={BTChangeLanguage} back={false}  navTransparent={true} renderLeftButton={<BTNavLeftButton/>}/>
                     <Scene key="walletDetail" component={BTWalletDetail} back={false}  navTransparent={true} renderLeftButton={<BTNavLeftButton/>}/>
+                    <Scene key="walletList" component={BTWalletList} back={false}  navTransparent={true} renderLeftButton={<BTNavLeftButton/>}/>
                 </Scene>
             </Router>
         )

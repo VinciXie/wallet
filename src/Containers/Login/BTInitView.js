@@ -10,13 +10,13 @@ export default class BTInitView extends PureComponent{
     }
 
     componentDidMount(){
-        Storage.load({key:'account'}).then(response=>{
-            if(response){
-                Actions.reset('home')
-            }
-        }).catch(error=>{
-            console.log({error})
-        })
+        // Storage.load({key:'account'}).then(response=>{
+        //     if(response){
+        //         Actions.reset('home')
+        //     }
+        // }).catch(error=>{
+        //     console.log({error})
+        // })
     }
 
     jumpToCreateAccount(){

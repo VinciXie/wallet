@@ -10,7 +10,7 @@ import {getBlockInfo} from '../../Common/BTCommonApi'
 import BTCrypto from '../../Crypto/index'
 import {registPack} from '../../lib/BTPackManager'
 import {messageSign} from '../../lib/BTSignManager'
-const Keystore = window.BTCrypto.keystore
+const Keystore = global.BTCrypto.keystore
 
 export default class BTCreateAccount extends PureComponent{
     constructor(props){
@@ -112,10 +112,12 @@ export default class BTCreateAccount extends PureComponent{
                             Toast.success('注册成功')
                             Actions.push("createAccountSuccess",{keystore})
                         }catch(error){
-                            Toast.fail('验证码错误')
+                            Toast.fail('keystore创建失败')
                         }
                     }else if(response.code==1001){
                         Toast.fail('验证码错误')
+                    }else if(response.code==10103){
+                        Toast.fail('账号已存在')
                     }else{
                         Toast.fail('注册失败')
                     }
