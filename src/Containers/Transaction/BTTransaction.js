@@ -11,6 +11,7 @@ import {transactionPack} from '../../lib/BTPackManager'
 import {messageSign} from '../../lib/BTSignManager'
 import {BTFetch} from '../../Common/BTFetch'
 
+const px2dp = global.px2dp
 const BTCrypto = global.BTCrypto
 const Keystore = BTCrypto.keystore
 const Storage = global.Storage
@@ -134,7 +135,7 @@ export default class BTTransaction extends PureComponent{
     render(){
         return(
             <View style={styles.container}>
-                <Modal transparent={true} visible={this.state.visible} style={{backgroundColor:'red',width:400,height:400}}>
+                <Modal transparent={true} visible={this.state.visible} style={{backgroundColor:'red',width:px2dp(400),height:px2dp(400)}}>
                     <BTCoinType onPress={(coinType)=>{this.setState({visible:false,coinType})}}/>
                 </Modal>
                 <Modal transparent={true} visible={this.state.showPasswordInput} style={{flex:1}}>
@@ -142,10 +143,10 @@ export default class BTTransaction extends PureComponent{
                 </Modal>
 
                 <View style={styles.navStyle}>
-                    <TouchableOpacity onPress={()=>{Actions.pop()}}><Image source={require('../../Public/img/back_arr_black.png')} style={{width:25,height:12}}/></TouchableOpacity>
-                    <TouchableOpacity onPress={()=>{this.scanAccount()}}><Image source={require('../../Public/img/scaner_black.png')} style={{width:32,height:27}}/></TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{Actions.pop()}}><Image source={require('../../Public/img/back_arr_black.png')} style={{width:px2dp(25),height:px2dp(12)}}/></TouchableOpacity>
+                    <TouchableOpacity onPress={()=>{this.scanAccount()}}><Image source={require('../../Public/img/scaner_black.png')} style={{width:px2dp(32),height:px2dp(27)}}/></TouchableOpacity>
                 </View>
-                <Text style={{fontSize:24,marginTop:12,marginLeft:20}}>转账</Text>
+                <Text style={{fontSize:24,marginTop:px2dp(12),marginLeft:px2dp(20)}}>转账</Text>
                 <View>
                     {/* <BTInputItem title="转账账户" color="black" showArr={true} lineStyle={{backgroundColor:'#E5E5E5'}} placeholder="dfsffdsf" arrPress={()=>{alert('arrorPress')}}/> */}
                     <BTInputItem title="收款地址" onChangeText={(value)=>{this.setState({to:value})}} color="black" lineStyle={{backgroundColor:'#E5E5E5'}} placeholder="请输入收款账户地址"/>
@@ -160,6 +161,6 @@ export default class BTTransaction extends PureComponent{
 
 const styles = StyleSheet.create({
     container:{flex:1,backgroundColor:'white'},
-    navStyle:{height:64,justifyContent:'space-between',alignItems:'center',flexDirection:'row',paddingTop:20,paddingLeft:20,paddingRight:20},
-    buttonStyle:{alignSelf:'center',width:333,height:60,marginTop:10,borderRadius:45}
+    navStyle:{height:px2dp(64),justifyContent:'space-between',alignItems:'center',flexDirection:'row',paddingTop:px2dp(20),paddingLeft:px2dp(20),paddingRight:px2dp(20)},
+    buttonStyle:{alignSelf:'center',width:px2dp(333),height:px2dp(60),marginTop:px2dp(10),borderRadius:px2dp(45)}
 })

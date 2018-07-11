@@ -6,6 +6,7 @@ import BTCard from './BTCard'
 import BTItemView from './subviews/BTItemView'
 import {BTFetch} from '../../Common/BTFetch'
 import {findAccounts,findAccount} from '../../DB/AccountDB'
+const px2dp = global.px2dp
 const Storage = global.Storage
 
 export default class BTHome extends PureComponent{
@@ -115,8 +116,8 @@ export default class BTHome extends PureComponent{
     render(){
         let data = this.state.data
         return(
-            <View style={{flex:1,paddingBottom:20,backgroundColor:'white'}}>
-                <Text style={{marginTop:45,marginLeft:20,fontSize:24,fontWeight:'bold'}}>{this.state.account}</Text>
+            <View style={{flex:1,paddingBottom:px2dp(20),backgroundColor:'white'}}>
+                <Text style={{marginTop:px2dp(45),marginLeft:(20),fontSize:24,fontWeight:'bold'}}>{this.state.account}</Text>
                 <FlatList
                     automaticallyAdjustContentInsets={false} // 去掉顶部空白
                     style={{flex:1,backgroundColor:'#F5F6FA'}}
@@ -178,7 +179,7 @@ class HeaderCard extends PureComponent{
 
     render(){
         return(
-            <View style={[styles.headerStyle,{marginBottom:20}]}>
+            <View style={[styles.headerStyle,{marginBottom:px2dp(20)}]}>
                 <WingBlank>
                     <Carousel
                         beforeChange={(from, to) => alert('beforechange')}
@@ -209,15 +210,15 @@ const styles = StyleSheet.create({
         backgroundColor:"#F5F6FA"
     },
     headerStyle:{
-        height:230,
+        height:px2dp(230),
         backgroundColor:"white",
         justifyContent:"center"
     },
     itemViewStyle:{
-        height:70,
+        height:(70),
         backgroundColor:'white',
-        marginLeft:18,
-        marginRight:18,
+        marginLeft:px2dp(18),
+        marginRight:px2dp(18),
         alignItems:'center',
         justifyContent:'space-between',
         flexDirection:'row'

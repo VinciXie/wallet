@@ -31,12 +31,12 @@ module.exports = function (requested_total_memory) {
       fa = !da && !ca && !ea;
     if (ca) {
       s.print = function (a) {
-        process.stdout.write(a + "\n")
+        // process.stdout.write(a + "\n")
         // console.log(a + "\n");
         // Object.s.print(a + "\n")
       };
       s.printErr = function (a) {
-        process.stderr.write(a + "\n")
+        // process.stderr.write(a + "\n")
         // console.log(a + "\n");
         // Object.s.print(a + "\n")
       };

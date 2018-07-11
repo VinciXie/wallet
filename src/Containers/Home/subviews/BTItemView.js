@@ -22,7 +22,7 @@ export default class BTItemView extends PureComponent{
                         {/* <Text style={{color:'#AFAFAF'}} numberOfLines={1}>{this.props.data.des || ''}</Text> */}
                     </View>
                 </View>
-                <View style={{marginRight:20}}>
+                <View style={{marginRight:px2dp(20)}}>
                     <Text>${usdtP.toFixed(2)}</Text>
                     <Text style={{color:'#AFAFAF'}}>≈￥{cnyP.toFixed(2)}</Text>
                 </View>
@@ -33,15 +33,15 @@ export default class BTItemView extends PureComponent{
 
 const styles = StyleSheet.create({
     iconStyle:{
-        width:35,
-        height:35,
-        margin:20
+        width:px2dp(35),
+        height:px2dp(35),
+        margin:px2dp(20)
     },
     itemViewStyle:{
-        height:70,
+        height:px2dp(70),
         backgroundColor:'white',
-        marginLeft:18,
-        marginRight:18,
+        marginLeft:px2dp(18),
+        marginRight:px2dp(18),
         alignItems:'center',
         justifyContent:'space-between',
         flexDirection:'row'

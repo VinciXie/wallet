@@ -18,6 +18,7 @@ import com.facebook.soloader.SoLoader;
 import java.util.Arrays;
 import java.util.List;
 import com.microsoft.codepush.react.CodePush;
+import io.realm.react.RealmReactPackage;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -44,6 +45,7 @@ public class MainApplication extends Application implements ReactApplication {
             new RNI18nPackage(),
             new RNDeviceInfo(),
             new RNCameraPackage(),
+            new RealmReactPackage(),
           new CodePush("deployment-key-here", MainApplication.this, BuildConfig.DEBUG)
       );
     }

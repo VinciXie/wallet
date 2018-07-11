@@ -9,6 +9,8 @@ const BTCrypto = global.BTCrypto
 const Kesytore = BTCrypto.keystore
 const Storage = global.Storage
 
+const px2dp = global.px2dp
+
 export default class BTLogin extends PureComponent{
     constructor(props){
         super(props)
@@ -60,13 +62,13 @@ export default class BTLogin extends PureComponent{
     render(){
         return(
             <View style={{flex:1,backgroundColor:'white'}}>
-                <Text style={{marginTop:12+44,fontSize:24}}>导入Keystore</Text>
-                <TextareaItem style={{width:350,height:113,marginTop:23,alignSelf:'center',borderWidth:1,borderColor:'#EBEBEB'}} rows={5} placeholder="请先复制keystore到粘贴板" value={this.state.keystore}></TextareaItem>
+                <Text style={{marginTop:px2dp(12+44),fontSize:24}}>导入Keystore</Text>
+                <TextareaItem style={{width:px2dp(350),height:px2dp(113),marginTop:px2dp(23),alignSelf:'center',borderWidth:px2dp(1),borderColor:'#EBEBEB'}} rows={5} placeholder="请先复制keystore到粘贴板" value={this.state.keystore}></TextareaItem>
                 <TouchableOpacity onPress={()=>{this.parseKeystore()}}>
-                    <Text style={{marginTop:7,alignSelf:'center',color:'#007AFF'}}>粘贴keystore</Text>
+                    <Text style={{marginTop:px2dp(7),alignSelf:'center',color:'#007AFF'}}>粘贴keystore</Text>
                 </TouchableOpacity>
                 <BTInputItem title="输入密码" placeholder="请输入6位以上字符" onChangeText={(password)=>{this.setState({password})}} secureTextEntry={true} textStyle={{color:'black'}} lineStyle={{backgroundColor:'#E5E5E5'}} inputStyle={{color:'black'}}/>
-                <BTButton title="确认导入" style={{alignSelf:'center',marginTop:16,width:333,height:60,borderRadius:45}} onClick={()=>{this.loginClick()}}/>
+                <BTButton title="确认导入" style={{alignSelf:'center',marginTop:px2dp(16),width:px2dp(333),height:px2dp(60),borderRadius:px2dp(45)}} onClick={()=>{this.loginClick()}}/>
             </View>
         )
     }

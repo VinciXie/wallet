@@ -30,7 +30,7 @@ export default class BTRouter extends PureComponent{
                     <Scene key="createAccount" component={BTCreateAccount}  navTransparent={true} renderLeftButton={<BTNavLeftButton backArr='white'/>}/>
                     <Scene key="createAccountSuccess" component={BTCreateSuccess}  navTransparent={true} renderLeftButton={<BTNavLeftButton backArr='white'/>}/>
                     <Scene key="BTBackUpKeystore" naviga component={BTBackUpKeystore}  navTransparent={true} renderLeftButton={<BTNavLeftButton backArr='white'/>}/>
-                    <Scene key="home" component={BTTabBar} hideNavBar={true} initial={true}/>
+                    <Scene key="home" component={BTTabBar} hideNavBar={true}/>
                     <Scene key="login" component={BTLogin} back={false}  navTransparent={true} renderLeftButton={<BTNavLeftButton/>}/>
                     <Scene key="qrcode" component={BTQRCode} back={false}  navTransparent={true} renderLeftButton={<BTNavLeftButton/>}/>
                     <Scene key="transaction" component={BTTransaction} hideNavBar={true}/>

@@ -30,7 +30,7 @@
     "querystring-es3": "^0.2.1",
     "react": "16.3.1",
     "react-intl": "^2.4.0",
-    "react-native": "0.55.4",
+    "react-native": "^0.56.0",
     "react-native-camera": "^1.1.4",
     "react-native-code-push": "^5.3.5",
     "react-native-crypto": "^2.1.2",
@@ -40,7 +40,7 @@
     "react-native-os": "^1.2.1",
     "react-native-qr-scanner": "^1.2.4",
     "react-native-qrcode": "^0.2.6",
-    "react-native-randombytes": "^3.3.0",
+    "react-native-randombytes": "^3.4.0",
     "react-native-router-flux": "^4.0.0-beta.31",
     "react-native-storage": "^0.2.2",
     "react-native-tcp": "^3.3.0",
@@ -55,17 +55,18 @@
     "url": "^0.10.3",
     "util": "^0.10.4",
     "uuid": "^3.2.1",
-    "vm-browserify": "0.0.4"
+    "vm-browserify": "0.0.4",
+    "react-native-http": "tradle/react-native-http#834492d"
   },
   "devDependencies": {
     "babel": "^6.23.0",
     "babel-jest": "23.0.1",
     "babel-plugin-import": "^1.7.0",
     "babel-plugin-module-resolver": "^3.1.1",
-    "babel-preset-react-native": "4.0.0",
+    "babel-preset-react-native": "^5.0.0",
     "jest": "23.1.0",
     "react-test-renderer": "16.3.1",
-    "rn-nodeify": "github:tradle/rn-nodeify"
+    "rn-nodeify": "github:mvayngrib/rn-nodeify"
   },
   "jest": {
     "preset": "react-native"
@@ -78,7 +79,7 @@
     "dns": "dns.js",
     "net": "react-native-tcp",
     "domain": "domain-browser",
-    "http": "@tradle/react-native-http",
+    "http": "react-native-http",
     "https": "https-browserify",
     "os": "react-native-os",
     "path": "path-browserify",
@@ -104,7 +105,7 @@
     "dns": "dns.js",
     "net": "react-native-tcp",
     "domain": "domain-browser",
-    "http": "@tradle/react-native-http",
+    "http": "react-native-http",
     "https": "https-browserify",
     "os": "react-native-os",
     "path": "path-browserify",

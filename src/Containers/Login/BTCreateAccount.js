@@ -10,7 +10,11 @@ import {getBlockInfo} from '../../Common/BTCommonApi'
 import BTCrypto from '../../Crypto/index'
 import {registPack} from '../../lib/BTPackManager'
 import {messageSign} from '../../lib/BTSignManager'
-const Keystore = global.BTCrypto.keystore
+import Keystore from '../../Crypto/lib/keystore'
+// const Keystore = global.BTCrypto.keystore
+console.log({Keystore})
+
+const px2dp = global.px2dp
 
 export default class BTCreateAccount extends PureComponent{
     constructor(props){
@@ -113,6 +117,7 @@ export default class BTCreateAccount extends PureComponent{
                             Actions.push("createAccountSuccess",{keystore})
                         }catch(error){
                             Toast.fail('keystore创建失败')
+                            alert(error)
                         }
                     }else if(response.code==1001){
                         Toast.fail('验证码错误')
@@ -184,7 +189,7 @@ export default class BTCreateAccount extends PureComponent{
                     placeholderTextColor="#ACACAC"
                     title="账户名"
                     maxLength={16}
-                    style={{marginTop:67}}
+                    style={{marginTop:px2dp(67)}}
                     clearButtonMode="while-editing"
                     onChangeText={(username)=>{this.setState({username})}}
                 />
@@ -209,12 +214,12 @@ export default class BTCreateAccount extends PureComponent{
                         placeholder="请输入验证码"
                         placeholderTextColor="#ACACAC"
                         title="验证码"
-                        style={{width:200}}
+                        style={{width:px2dp(200)}}
                         clearButtonMode="while-editing"
                         onChangeText={(verificationCode)=>{this.setState({verificationCode})}}
                     /> 
                     <TouchableOpacity onPress={()=>{this.getVerifyCode()}}>
-                        <Image source={{uri:this.state.verify_data}} style={{width:116,height:33,backgroundColor:'#F9F9FB'}}/>
+                        <Image source={{uri:this.state.verify_data}} style={{width:px2dp(116),height:px2dp(33),backgroundColor:'#F9F9FB'}}/>
                     </TouchableOpacity>
                 </View>
 
@@ -226,5 +231,5 @@ export default class BTCreateAccount extends PureComponent{
 
 const styles = StyleSheet.create({
     container:{flex:1},
-    buttonStyle:{marginTop:22,alignSelf:'center',width:333,height:60}
+    buttonStyle:{marginTop:px2dp(22),alignSelf:'center',width:px2dp(333),height:px2dp(60)}
 })

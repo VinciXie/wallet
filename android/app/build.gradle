@@ -95,8 +95,9 @@ def enableSeparateBuildPerCPUArchitecture = false
 def enableProguardInReleaseBuilds = false
 
 android {
-    compileSdkVersion 23
-    buildToolsVersion "23.0.1"
+    // compileSdkVersion 23
+    // buildToolsVersion "23.0.1"
+    compileSdkVersion 26
 
     defaultConfig {
         applicationId "com.rn_wallet"
