@@ -1,6 +1,6 @@
 /*
   Copyright 2017~2022 The Bottos Authors
-  This file is part of the Bottos Data Exchange Client
+  This file is part of the Bottos Official Wallet
   Created by Developers Team of Bottos.
 
   This program is free software: you can distribute it and/or modify
