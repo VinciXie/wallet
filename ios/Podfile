@@ -1,0 +1,12 @@
+# Uncomment the next line to define a global platform for your project
+platform :ios, '10.0'
+
+target 'rn_wallet' do
+
+  use_frameworks!
+  pod 'BigInt', inhibit_warnings: true
+  pod 'CryptoSwift', '~> 0.10.0'
+  pod 'TrezorCrypto', inhibit_warnings: true
+  pod 'TrustCore', :git=>'https://github.com/TrustWallet/trust-core', :branch=>'master', inhibit_warnings: true
+  pod 'SwiftLint'
+end

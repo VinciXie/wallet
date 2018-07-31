@@ -1,6 +1,6 @@
 import React,{PureComponent} from 'react'
 import {TextInput} from 'react-native'
-import {Toast, View} from 'antd-mobile'
+import {Toast, View} from 'antd-mobile-rn'
 
 export default class BTNumberInput extends PureComponent{
     constructor(props){

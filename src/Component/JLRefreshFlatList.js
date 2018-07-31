@@ -2,11 +2,12 @@ import React,{PureComponent} from 'react'
 import {View,StyleSheet,Text,FlatList,ActivityIndicator,TouchableOpacity} from 'react-native'
 
 export const RefreshState = {
-    Normal:0,
-    onHeaderRefreshing:1,
-    onFooterLoadingMore:2,
-    NoMoreData:3,
-    EmptyData:4
+    Init:0,
+    Normal:1,
+    onHeaderRefreshing:2,
+    onFooterLoadingMore:3,
+    NoMoreData:4,
+    EmptyData:5
 }
 
 export default class JLRefreshFlatList extends PureComponent{
@@ -16,7 +17,7 @@ export default class JLRefreshFlatList extends PureComponent{
 
     static defaultProps = {
         data:[],
-        refreshState:RefreshState.Normal,
+        refreshState:RefreshState.Init,
         onEndReachedThreshold:0.01,
         renderItem:()=>{},
         onHeaderRefreshing:()=>{},
@@ -37,13 +38,13 @@ export default class JLRefreshFlatList extends PureComponent{
     }
 
     beginLoadingMore(){
-        if(this.shouldRefreshing()){
+        if(this.shouldRefreshing() && (this.props.refreshState != RefreshState.NoMoreData)){
             this.props.onFooterLoadingMore && this.props.onFooterLoadingMore()
         }
     }
 
     shouldRefreshing(){
-        return !(this.props.refreshState===RefreshState.onHeaderRefreshing || this.props.refreshState===RefreshState.onFooterLoadingMore)
+        return !(this.props.refreshState===RefreshState.onHeaderRefreshing || this.props.refreshState===RefreshState.onFooterLoadingMore || this.props.refreshState===RefreshState.Init)
     }
 
     footerRefresh(){
@@ -51,16 +52,24 @@ export default class JLRefreshFlatList extends PureComponent{
         let loadingMoreText = '点击加载更多数据'
         let refreshState = this.props.refreshState
         switch(refreshState){
+            case RefreshState.Init:
+                loadingMoreText  = NoteText.normal;
+                break;
             case RefreshState.Normal:
                 loadingMoreText = NoteText.normal;
+                break;
             case RefreshState.onFooterLoadingMore:
                 loadingMoreText = NoteText.loadingMoreText;
+                break;
             case RefreshState.NoMoreData:
                 loadingMoreText = NoteText.noMoreData;
+                break;
             case RefreshState.EmptyData:
                 loadingMoreText = NoteText.emptyData;
+                break;
             default:
                 loadingMoreText = NoteText.normal
+                break;
         }
 
         return(

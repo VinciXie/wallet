@@ -3,10 +3,11 @@ package com.rn_wallet;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
-import com.tradle.react.UdpSocketsModule;
-import com.peel.react.TcpSocketsModule;
-import com.peel.react.rnos.RNOSModule;
 import com.bitgo.randombytes.RandomBytesPackage;
+// import com.tradle.react.UdpSocketsModule;
+// import com.peel.react.TcpSocketsModule;
+// import com.peel.react.rnos.RNOSModule;
+// import com.bitgo.randombytes.RandomBytesPackage;
 import com.AlexanderZaytsev.RNI18n.RNI18nPackage;
 import com.learnium.RNDeviceInfo.RNDeviceInfo;
 import org.reactnative.camera.RNCameraPackage;
@@ -17,7 +18,6 @@ import com.facebook.soloader.SoLoader;
 
 import java.util.Arrays;
 import java.util.List;
-import com.microsoft.codepush.react.CodePush;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -37,10 +37,11 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
-            new UdpSocketsModule(),
-            new TcpSocketsModule(),
-            new RNOSModule(),
             new RandomBytesPackage(),
+            // new UdpSocketsModule(),
+            // new TcpSocketsModule(),
+            // new RNOSModule(),
+            // new RandomBytesPackage(),
             new RNI18nPackage(),
             new RNDeviceInfo(),
             new RNCameraPackage(),

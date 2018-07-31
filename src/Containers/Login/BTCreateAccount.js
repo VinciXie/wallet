@@ -1,16 +1,23 @@
 import React,{PureComponent} from 'react'
 import {View,StyleSheet,ImageBackground,TouchableOpacity,Image} from 'react-native'
-import {Toast} from 'antd-mobile'
+import {Toast} from 'antd-mobile-rn'
 import {Actions} from 'react-native-router-flux'
 import BTInputItem from '../../Component/BTInputItem'
 import BTButton from '../../Component/BTButton'
 import {isUserName} from '../../Common/BTVerify'
 import {BTFetch} from '../../Common/BTFetch'
 import {getBlockInfo} from '../../Common/BTCommonApi'
-import BTCrypto from '../../Crypto/index'
 import {registPack} from '../../lib/BTPackManager'
 import {messageSign} from '../../lib/BTSignManager'
-const Keystore = window.BTCrypto.keystore
+import Locale from '../../locales/index'
+// const Locale = global.Locale
+var Buffer = require('buffer/').Buffer
+const BTCrypto = global.BTCrypto
+const Keystore = global.BTCrypto.keystore
+
+console.log({BTCrypto})
+
+const px2dp = global.px2dp
 
 export default class BTCreateAccount extends PureComponent{
     constructor(props){
@@ -49,83 +56,180 @@ export default class BTCreateAccount extends PureComponent{
         })
     }
 
-     async createAccount(){
+    createAccount(){
         let username = this.state.username;
         let password = this.state.password;
         let repassword = this.state.repassword
         let verificationCode = this.state.verificationCode
+
         if(!isUserName(this.state.username)) {
-            Toast.fail("用户名输入错误")
+            Toast.fail(Locale.t('Message_UserNameWrong'))
             return
         }
         if(this.state.password.length < 8){
-            Toast.fail("密码输入不正确")
+            Toast.fail(Locale.t('Message_PasswordWrong'))
             return
         }
         if(this.state.password != this.state.repassword){
-            Toast.fail("两次输入密码不正确")
+            Toast.fail(Locale.t('Message_PasswordTwiceNotSame'))
             return
         }
         if(this.state.verificationCode==''){
-            Toast.fail('请输入验证码')
+            Toast.fail(Locale.t('Message_PlaceInputVerifyCode'))
             return
         }
 
-        let keys = BTCrypto.createPubPrivateKeys()
-        let privateKey = keys.privateKey
-        let blockHeader = await getBlockInfo()
-        let didParam = this.getDid(username,keys)
-        let buf = registPack(didParam)
+        BTCrypto.createKeys(async(error,result)=>{
+            if(error){
+                Toast.fail(Locale.t('Message_KeystoreCreateFailed'))
+                return
+            }
+            let Keystrings = JSON.parse(result)
+            let privateKey = Buffer.from(Keystrings.privateKey,'hex')
+            let publicKey = Buffer.from(Keystrings.publicKey,'hex')
+            let keys = {privateKey,publicKey}
+            let blockHeader = await getBlockInfo()
+            let didParam = this.getDid(username,keys)
+            let buf = registPack(didParam)
 
-        let newuser = {
-            version:1,
-            ...blockHeader,
-            sender: username,
-            contract:"usermng",
-            method:"reguser",
-            param: buf,
-            sig_alg:1
-        }
-        let signObj = messageSign(newuser,privateKey)
-        newuser.param = BTCrypto.buf2hex(buf)
-        newuser.signature = signObj.toString('hex')
+            let newuser = {
+                version:1,
+                ...blockHeader,
+                sender: username,
+                contract:"usermng",
+                method:"reguser",
+                param: buf,
+                sig_alg:1
+            }
 
-        let registParams = {
-            account:{
-                Name:username,
-                Pubkey:keys.publicKey.toString('hex')
-            },
-            user:newuser,
-            verify_id:this.state.verify_id,
-            verify_value:verificationCode
-        }
+            let signObj = messageSign(newuser,privateKey)
+            newuser.param = BTCrypto.buf2hex(buf)
+            newuser.signature = signObj.toString('hex')
 
-        let url = '/user/register'
-        Toast.loading('正在创建',1000*6)
-        setTimeout(()=>{
-            BTFetch(url,'POST',registParams).then(response=>{
-                console.log({response})
-                if(response){
-                    if(response.code==1){
-                        try{
-                            let keystore = Keystore.create({account:username,password,privateKey})
-                            Toast.success('注册成功')
-                            Actions.push("createAccountSuccess",{keystore})
-                        }catch(error){
-                            Toast.fail('验证码错误')
+            let registParams = {
+                account:{
+                    Name:username,
+                    Pubkey:keys.publicKey.toString('hex')
+                },
+                user:newuser,
+                verify_id:this.state.verify_id,
+                verify_value:verificationCode
+            }
+
+            let url = '/user/register'
+            Toast.loading(Locale.t('Message_OnCreating'),1000*6)
+            setTimeout(()=>{
+                BTFetch(url,'POST',registParams).then(response=>{
+                    if(response){
+                        if(response.code==1){
+                            console.log({privateKey})
+                            BTCrypto.createKeystoreWithPrivateKey(privateKey.toString('hex'),password,(error,result)=>{
+                                if(error){
+                                    Toast.fail(Locale.t('Message_KeystoreCreateFailed'))
+                                }else{
+                                    let keystore = JSON.parse(result)
+                                    keystore.account = username
+                                    delete keystore.address
+                                    Toast.success(Locale.t('Message_RegistSuccess'))
+                                    Actions.push("createAccountSuccess",{keystore})
+                                }
+                            })
+                        }else if(response.code==1001){
+                            Toast.fail(Locale.t('Message_VerifyCodeFailed'))
+                        }else if(response.code==10103){
+                            Toast.fail(Locale.t('Message_AccountAlreadyExist'))
+                        }else{
+                            Toast.fail(Locale.t('Message_RegistFailed'))
                         }
-                    }else if(response.code==1001){
-                        Toast.fail('验证码错误')
-                    }else{
-                        Toast.fail('注册失败')
                     }
-                }
-            }).catch(error=>{
-                console.log({error})
-                Toast.fail('注册失败')
-            })
-        },1000)
+                }).catch(error=>{
+                    console.log({error})
+                    Toast.fail(Locale.t('Message_RegistFailed'))
+                })
+            },1000)
+        })
     }
+
+    //  async createAccount1(){
+    //     let username = this.state.username;
+    //     let password = this.state.password;
+    //     let repassword = this.state.repassword
+    //     let verificationCode = this.state.verificationCode
+    //     if(!isUserName(this.state.username)) {
+    //         Toast.fail(Locale.t('Message_UserNameWrong'))
+    //         return
+    //     }
+    //     if(this.state.password.length < 8){
+    //         Toast.fail(Locale.t('Message_PasswordWrong'))
+    //         return
+    //     }
+    //     if(this.state.password != this.state.repassword){
+    //         Toast.fail(Locale.t('Message_PasswordTwiceNotSame'))
+    //         return
+    //     }
+    //     if(this.state.verificationCode==''){
+    //         Toast.fail(Locale.t('Message_PlaceInputVerifyCode'))
+    //         return
+    //     }
+
+    //     let keys = BTCrypto.createKeys()
+    //     let privateKey = keys.privateKey
+    //     let blockHeader = await getBlockInfo()
+    //     let didParam = this.getDid(username,keys)
+    //     let buf = registPack(didParam)
+
+    //     let newuser = {
+    //         version:1,
+    //         ...blockHeader,
+    //         sender: username,
+    //         contract:"usermng",
+    //         method:"reguser",
+    //         param: buf,
+    //         sig_alg:1
+    //     }
+    //     let signObj = messageSign(newuser,privateKey)
+    //     newuser.param = BTCrypto.buf2hex(buf)
+    //     newuser.signature = signObj.toString('hex')
+
+    //     let registParams = {
+    //         account:{
+    //             Name:username,
+    //             Pubkey:keys.publicKey.toString('hex')
+    //         },
+    //         user:newuser,
+    //         verify_id:this.state.verify_id,
+    //         verify_value:verificationCode
+    //     }
+
+    //     let url = '/user/register'
+    //     Toast.loading(Locale.t('Message_OnCreating'),1000*6)
+    //     setTimeout(()=>{
+    //         BTFetch(url,'POST',registParams).then(response=>{
+    //             console.log({response})
+    //             if(response){
+    //                 if(response.code==1){
+    //                     try{
+    //                         let keystore = Keystore.create({account:username,password,privateKey})
+    //                         Toast.success(Locale.t('Message_RegistSuccess'))
+    //                         Actions.push("createAccountSuccess",{keystore})
+    //                     }catch(error){
+    //                         Toast.fail(Locale.t('Message_KeystoreCreateFailed'))
+    //                         alert(error)
+    //                     }
+    //                 }else if(response.code==1001){
+    //                     Toast.fail(Locale.t('Message_VerifyCodeFailed'))
+    //                 }else if(response.code==10103){
+    //                     Toast.fail(Locale.t('Message_AccountAlreadyExist'))
+    //                 }else{
+    //                     Toast.fail(Locale.t('Message_RegistFailed'))
+    //                 }
+    //             }
+    //         }).catch(error=>{
+    //             console.log({error})
+    //             Toast.fail(Locale.t('Message_RegistFailed'))
+    //         })
+    //     },1000)
+    // }
 
     getDid(accountName,keys){
         let publicKey = keys.publicKey
@@ -178,45 +282,45 @@ export default class BTCreateAccount extends PureComponent{
         return(
             <ImageBackground source={require('../../Public/img/create_account_bg.png')} style={{width:global.ScreenWidth,height:global.ScreenHeight}}>
                 <BTInputItem 
-                    placeholder="3~16个小写字母、数字 以字母开头"
+                    placeholder={Locale.t('Regist_UserNamePlaceholder')}
                     placeholderTextColor="#ACACAC"
-                    title="账户名"
+                    title={Locale.t('Regist_UserName')}
                     maxLength={16}
-                    style={{marginTop:67}}
+                    style={{marginTop:px2dp(67)}}
                     clearButtonMode="while-editing"
                     onChangeText={(username)=>{this.setState({username})}}
                 />
                 <BTInputItem 
-                    placeholder="8~16位密码"
+                    placeholder={Locale.t('Regist_PasswordPlaceholder')}
                     placeholderTextColor="#ACACAC"
-                    title="输入密码"
+                    title={Locale.t('Regist_Password')}
                     clearButtonMode="while-editing"
                     secureTextEntry={true}
                     onChangeText={(password)=>{this.setState({password})}}
                 />
                 <BTInputItem 
-                    placeholder="8~16位密码"
+                    placeholder={Locale.t('Regist_Password')}
                     placeholderTextColor="#ACACAC"
-                    title="确认密码"
+                    title={Locale.t('Regist_SurePassword')}
                     clearButtonMode="while-editing"
                     secureTextEntry={true}
                     onChangeText={(repassword)=>{this.setState({repassword})}}
                 />
                 <View style={{flexDirection:'row',alignItems:'center'}}>
                     <BTInputItem 
-                        placeholder="请输入验证码"
+                        placeholder={Locale.t('Regist_VerifyCodePlaceholder')}
                         placeholderTextColor="#ACACAC"
-                        title="验证码"
-                        style={{width:200}}
+                        title={Locale.t('Regist_VerifyCode')}
+                        style={{width:px2dp(200)}}
                         clearButtonMode="while-editing"
                         onChangeText={(verificationCode)=>{this.setState({verificationCode})}}
                     /> 
                     <TouchableOpacity onPress={()=>{this.getVerifyCode()}}>
-                        <Image source={{uri:this.state.verify_data}} style={{width:116,height:33,backgroundColor:'#F9F9FB'}}/>
+                        <Image source={{uri:this.state.verify_data}} style={{width:px2dp(116),height:px2dp(33),backgroundColor:'#F9F9FB'}}/>
                     </TouchableOpacity>
                 </View>
 
-                <BTButton title="下一步" style={styles.buttonStyle} onClick={()=>{this.createAccount()}}/>
+                <BTButton title={Locale.t('Other_Next')} style={styles.buttonStyle} onClick={()=>{this.createAccount()}}/>
             </ImageBackground>
         )
     }
@@ -224,5 +328,5 @@ export default class BTCreateAccount extends PureComponent{
 
 const styles = StyleSheet.create({
     container:{flex:1},
-    buttonStyle:{marginTop:22,alignSelf:'center',width:333,height:60}
+    buttonStyle:{marginTop:px2dp(22),alignSelf:'center',width:px2dp(333),height:px2dp(60)}
 })

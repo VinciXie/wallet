@@ -1,28 +1,24 @@
 import React,{PureComponent} from 'react'
-import {View,StyleSheet,Text} from 'react-native'
+import {View,StyleSheet,Text,Image} from 'react-native'
 import QRCode from 'react-native-qrcode'
 import BTButton from '../Component/BTButton'
 
 export default class BTQRCode extends PureComponent{
     constructor(props){
         super(props)
-
-        this.state = {
-            qrcode:'sdkljfldsfj'
-        }
     }
 
     render(){
         return(
             <View style={{flex:1,backgroundColor:'white'}}>
                 <View style={{height:133,backgroundColor:'#049BFF'}}></View>
-                <View style={{width:88,height:88,alignSelf:'center',backgroundColor:'red',marginTop:-44,borderRadius:45}}></View>
+                <Image style={{width:88,height:88,alignSelf:'center',backgroundColor:'white',marginTop:-44,borderRadius:45}} source={require('../Public/img/1.png')}/>
                 <Text style={{marginTop:5,marginLeft:20,fontSize:15,fontWeight:'bold'}}>收款地址</Text>
-                <Text style={{width:350,height:59,fontSize:17,backgroundColor:'#F8F8F8',textAlign:'left',alignSelf:'center'}}>0x8c7a5871a3f100a2c063e225812e3f5332007363de6ae328632d03caf75a911b</Text>
+                <Text style={{width:350,height:59,fontSize:17,backgroundColor:'#F8F8F8',padding:20,alignSelf:'center'}}>{this.props.account || ''}</Text>
                 <View style={{width:210,height:210,backgroundColor:'red',alignSelf:'center',marginTop:22}}>
                     <QRCode
                         style={{flex:1}}
-                        value={this.state.qrcode}
+                        value={this.props.account || ''}
                         size={210}
                         bgColor='black'
                         fgColor='white'
