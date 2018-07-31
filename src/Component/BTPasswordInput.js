@@ -1,6 +1,6 @@
 import React,{PureComponent} from 'react'
 import {View,StyleSheet,ImageBackground,TouchableOpacity,Image,Text} from 'react-native'
-import {InputItem} from 'antd-mobile'
+import {InputItem} from 'antd-mobile-rn'
 
 export default class BTPasswordImput extends PureComponent{
     constructor(props){

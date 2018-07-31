@@ -13,7 +13,6 @@
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
 		00E356F31AD99517003FC87E /* rn_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* rn_walletTests.m */; };
-		08F5232E00244E42A883F240 /* libUdpSockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A17362CF2F8A4B15A109F11A /* libUdpSockets.a */; };
 		0CF2EAE583E2400DAE55DBE3 /* libRNRandomBytes.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00817B0B77674DEE877E72F4 /* libRNRandomBytes.a */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
@@ -38,20 +37,29 @@
 		2D16E6881FA4F8E400B85C8A /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D16E6891FA4F8E400B85C8A /* libReact.a */; };
 		2DCD954D1E0B4F2C00145EB5 /* rn_walletTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* rn_walletTests.m */; };
 		2DF0FFEE2056DD460020B375 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		32B1BA7AECF04225BA2DCA78 /* libRNOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B3406C70E4540AF898B11FB /* libRNOS.a */; };
 		39DBA477E83A414B9BA52B3C /* libRNDeviceInfo-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4E8350EB962542C183765D6B /* libRNDeviceInfo-tvOS.a */; };
-		44DF939A5BE84EEB851B5829 /* libRealmReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 649994E58FB84F9AB39E21EB /* libRealmReact.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
-		5F9C9D94A3B0408E8F71D6A5 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = D985D2F3AA7A47A1A78FF56A /* libz.tbd */; };
 		68149CD7165745339A7C6F0B /* libRNRandomBytes-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = F6B6690358AB44E7AF19597D /* libRNRandomBytes-tvOS.a */; };
 		6948EAADB64144F4AEF4860D /* libRNCamera.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5382A1238C3E48A6876879D2 /* libRNCamera.a */; };
-		75EBBB23D6CC41B1A054D287 /* libc++.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A98CF2BEB8AB44FAB5E34F7A /* libc++.tbd */; };
+		8005C1992105AF750088B138 /* bundle in Resources */ = {isa = PBXBuildFile; fileRef = 8005C16B2105AF750088B138 /* bundle */; };
+		8050CF5B210032030013BD0C /* BTKeystore.m in Sources */ = {isa = PBXBuildFile; fileRef = 8050CF5A210032030013BD0C /* BTKeystore.m */; };
+		805C9D4F2101E877001C7A55 /* KeyStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C9D462101E877001C7A55 /* KeyStore.swift */; };
+		805C9D502101E877001C7A55 /* Scrypt.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C9D472101E877001C7A55 /* Scrypt.swift */; };
+		805C9D512101E877001C7A55 /* ScryptParams.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C9D482101E877001C7A55 /* ScryptParams.swift */; };
+		805C9D522101E877001C7A55 /* KeyStore.Error.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C9D492101E877001C7A55 /* KeyStore.Error.swift */; };
+		805C9D532101E877001C7A55 /* KeystoreKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C9D4A2101E877001C7A55 /* KeystoreKey.swift */; };
+		805C9D542101E877001C7A55 /* Account.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C9D4B2101E877001C7A55 /* Account.swift */; };
+		805C9D552101E877001C7A55 /* KeystoreKeyHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C9D4C2101E877001C7A55 /* KeystoreKeyHeader.swift */; };
+		805C9D562101E877001C7A55 /* Wallet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C9D4D2101E877001C7A55 /* Wallet.swift */; };
+		805C9D5B2101E882001C7A55 /* KeystoreKeyTool.m in Sources */ = {isa = PBXBuildFile; fileRef = 805C9D592101E882001C7A55 /* KeystoreKeyTool.m */; };
+		805C9D5D2101EA59001C7A55 /* KeystoreKeyCreatTool.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805C9D5C2101EA59001C7A55 /* KeystoreKeyCreatTool.swift */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		917BAE8037D34E039B351D3C /* libRNDeviceInfo.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DFC632DB8A2144B797ABF3E0 /* libRNDeviceInfo.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
-		B6A9BFBBAFDE4FB693996AD7 /* libTcpSockets.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 35D630AB41F049B2BDE7AF95 /* libTcpSockets.a */; };
 		BDCE82F3DE54423E87916C82 /* libRNI18n-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D517D04470C542FBA1C0CB17 /* libRNI18n-tvOS.a */; };
-		E9226D65697948A49B3E609B /* libCodePush.a in Frameworks */ = {isa = PBXBuildFile; fileRef = D26A7F281F094CC383983AE8 /* libCodePush.a */; };
+		EAA34BA6BE8C49AA8F016D7B /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 25C9FA0E9C2444708037FB1A /* libsqlite3.0.tbd */; };
+		F4E54D9118E9C18260E1B2D4 /* Pods_rn_wallet.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DF037CDFBC9A04AA10B08F0 /* Pods_rn_wallet.framework */; };
+		F5639A6AEE294B73BE0D9BD3 /* libSQLite.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 41DBE4E596414D67901431C1 /* libSQLite.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -314,6 +322,13 @@
 			remoteGlobalIDString = 134814201AA4EA6300B7C361;
 			remoteInfo = RCTLinking;
 		};
+		806D373120FF3FA7004E6E4B /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = F18019A2376B402E886CC622 /* SQLite.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = E23D7B471ACEFE2A00C59171;
+			remoteInfo = SQLite;
+		};
 		832341B41AAA6A8300B99B32 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */;
@@ -327,13 +342,6 @@
 			proxyType = 2;
 			remoteGlobalIDString = 358F4ED71D1E81A9004DF814;
 			remoteInfo = RCTBlob;
-		};
-		C1276A3D20EB277300DD91E8 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F86FBBBF1B194CB89C0E8114 /* RealmReact.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F60690131CA2766F0003FB26;
-			remoteInfo = RealmReact;
 		};
 		C13A2C4520DC9FF800D364CA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -377,41 +385,6 @@
 			remoteGlobalIDString = 163CDE4E2087CAD3001065FB;
 			remoteInfo = "RNRandomBytes-tvOS";
 		};
-		C154EFFB20E48BFA00D9C40B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 727CD53ADCD34624AFFAAAE0 /* RNOS.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = RNOS;
-		};
-		C154EFFE20E48BFA00D9C40B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = F5DD8D0F9D9D40EF9D1A14D6 /* TcpSockets.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = TcpSockets;
-		};
-		C154F00120E48BFA00D9C40B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = CD3C93687C904F679D448432 /* UdpSockets.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = UdpSockets;
-		};
-		C16686BE20C90FCE0094F30B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 678FACA2E6CA45388C1CF997 /* CodePush.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = 134814201AA4EA6300B7C361;
-			remoteInfo = CodePush;
-		};
-		C16686C020C90FCE0094F30B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 678FACA2E6CA45388C1CF997 /* CodePush.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = F886647B1F4ADB500036D01B;
-			remoteInfo = "CodePush-tvOS";
-		};
 		C19D147820D8DB31007A4F29 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 4C76DB07DD404739864A25AB /* RNCamera.xcodeproj */;
@@ -442,34 +415,47 @@
 		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = rn_wallet/main.m; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		229C3A901EB14763BAF1C913 /* RNRandomBytes.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNRandomBytes.xcodeproj; path = "../node_modules/react-native-randombytes/RNRandomBytes.xcodeproj"; sourceTree = "<group>"; };
+		25C9FA0E9C2444708037FB1A /* libsqlite3.0.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
 		2D02E47B1E0B4A5D006451C7 /* rn_wallet-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "rn_wallet-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D02E4901E0B4A5D006451C7 /* rn_wallet-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "rn_wallet-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D16E6891FA4F8E400B85C8A /* libReact.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; path = libReact.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		35D630AB41F049B2BDE7AF95 /* libTcpSockets.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libTcpSockets.a; sourceTree = "<group>"; };
+		41DBE4E596414D67901431C1 /* libSQLite.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libSQLite.a; sourceTree = "<group>"; };
 		45FCDC5567F84F9CB4B4474C /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/ios/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
 		4C76DB07DD404739864A25AB /* RNCamera.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNCamera.xcodeproj; path = "../node_modules/react-native-camera/ios/RNCamera.xcodeproj"; sourceTree = "<group>"; };
 		4E8350EB962542C183765D6B /* libRNDeviceInfo-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNDeviceInfo-tvOS.a"; sourceTree = "<group>"; };
 		5382A1238C3E48A6876879D2 /* libRNCamera.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNCamera.a; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
-		649994E58FB84F9AB39E21EB /* libRealmReact.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRealmReact.a; sourceTree = "<group>"; };
-		678FACA2E6CA45388C1CF997 /* CodePush.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = CodePush.xcodeproj; path = "../node_modules/react-native-code-push/ios/CodePush.xcodeproj"; sourceTree = "<group>"; };
-		727CD53ADCD34624AFFAAAE0 /* RNOS.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNOS.xcodeproj; path = "../node_modules/react-native-os/ios/RNOS.xcodeproj"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
+		7DF037CDFBC9A04AA10B08F0 /* Pods_rn_wallet.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_rn_wallet.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8005C16B2105AF750088B138 /* bundle */ = {isa = PBXFileReference; lastKnownFileType = folder; path = bundle; sourceTree = "<group>"; };
+		8050CF59210032020013BD0C /* BTKeystore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BTKeystore.h; sourceTree = "<group>"; };
+		8050CF5A210032030013BD0C /* BTKeystore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BTKeystore.m; sourceTree = "<group>"; };
+		805C9D462101E877001C7A55 /* KeyStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStore.swift; sourceTree = "<group>"; };
+		805C9D472101E877001C7A55 /* Scrypt.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Scrypt.swift; sourceTree = "<group>"; };
+		805C9D482101E877001C7A55 /* ScryptParams.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScryptParams.swift; sourceTree = "<group>"; };
+		805C9D492101E877001C7A55 /* KeyStore.Error.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyStore.Error.swift; sourceTree = "<group>"; };
+		805C9D4A2101E877001C7A55 /* KeystoreKey.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoreKey.swift; sourceTree = "<group>"; };
+		805C9D4B2101E877001C7A55 /* Account.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Account.swift; sourceTree = "<group>"; };
+		805C9D4C2101E877001C7A55 /* KeystoreKeyHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeystoreKeyHeader.swift; sourceTree = "<group>"; };
+		805C9D4D2101E877001C7A55 /* Wallet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Wallet.swift; sourceTree = "<group>"; };
+		805C9D4E2101E877001C7A55 /* TrustKeystore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TrustKeystore.h; sourceTree = "<group>"; };
+		805C9D582101E882001C7A55 /* KeystoreKeyTool.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeystoreKeyTool.h; sourceTree = "<group>"; };
+		805C9D592101E882001C7A55 /* KeystoreKeyTool.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeystoreKeyTool.m; sourceTree = "<group>"; };
+		805C9D5C2101EA59001C7A55 /* KeystoreKeyCreatTool.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeystoreKeyCreatTool.swift; sourceTree = "<group>"; };
+		80D637E4210028740006C499 /* rn_wallet-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "rn_wallet-Bridging-Header.h"; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
 		8B3406C70E4540AF898B11FB /* libRNOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNOS.a; sourceTree = "<group>"; };
 		99396D9558EB479CAAA2E228 /* libRNI18n.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNI18n.a; sourceTree = "<group>"; };
 		A17362CF2F8A4B15A109F11A /* libUdpSockets.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libUdpSockets.a; sourceTree = "<group>"; };
-		A98CF2BEB8AB44FAB5E34F7A /* libc++.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = "libc++.tbd"; path = "usr/lib/libc++.tbd"; sourceTree = SDKROOT; };
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
+		B7C14897D5CB57F3104A016E /* Pods-rn_wallet.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_wallet.debug.xcconfig"; path = "Pods/Target Support Files/Pods-rn_wallet/Pods-rn_wallet.debug.xcconfig"; sourceTree = "<group>"; };
+		BCFB671D6F0DC5BCCCE51A03 /* Pods-rn_wallet.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-rn_wallet.release.xcconfig"; path = "Pods/Target Support Files/Pods-rn_wallet/Pods-rn_wallet.release.xcconfig"; sourceTree = "<group>"; };
 		C1DD5ED120CE5E41001A8B2C /* zh-Hans */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hans"; path = "zh-Hans.lproj/LaunchScreen.strings"; sourceTree = "<group>"; };
-		CD3C93687C904F679D448432 /* UdpSockets.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = UdpSockets.xcodeproj; path = "../node_modules/react-native-udp/ios/UdpSockets.xcodeproj"; sourceTree = "<group>"; };
-		D26A7F281F094CC383983AE8 /* libCodePush.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libCodePush.a; sourceTree = "<group>"; };
 		D517D04470C542FBA1C0CB17 /* libRNI18n-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNI18n-tvOS.a"; sourceTree = "<group>"; };
-		D985D2F3AA7A47A1A78FF56A /* libz.tbd */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		DFC632DB8A2144B797ABF3E0 /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = "<group>"; };
-		F5DD8D0F9D9D40EF9D1A14D6 /* TcpSockets.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = TcpSockets.xcodeproj; path = "../node_modules/react-native-tcp/ios/TcpSockets.xcodeproj"; sourceTree = "<group>"; };
+		F18019A2376B402E886CC622 /* SQLite.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = SQLite.xcodeproj; path = "../node_modules/react-native-sqlite-storage/src/ios/SQLite.xcodeproj"; sourceTree = "<group>"; };
 		F6B6690358AB44E7AF19597D /* libRNRandomBytes-tvOS.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = "libRNRandomBytes-tvOS.a"; sourceTree = "<group>"; };
-		F86FBBBF1B194CB89C0E8114 /* RealmReact.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RealmReact.xcodeproj; path = "../node_modules/realm/react-native/ios/RealmReact.xcodeproj"; sourceTree = "<group>"; };
 		FECFAB11A24A45029FF24726 /* RNI18n.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNI18n.xcodeproj; path = "../node_modules/react-native-i18n/ios/RNI18n.xcodeproj"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -499,17 +485,13 @@
 				832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */,
 				00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */,
 				139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */,
-				E9226D65697948A49B3E609B /* libCodePush.a in Frameworks */,
-				5F9C9D94A3B0408E8F71D6A5 /* libz.tbd in Frameworks */,
 				6948EAADB64144F4AEF4860D /* libRNCamera.a in Frameworks */,
 				917BAE8037D34E039B351D3C /* libRNDeviceInfo.a in Frameworks */,
 				16CAC0CED6DD4570B6BDF5A0 /* libRNI18n.a in Frameworks */,
 				0CF2EAE583E2400DAE55DBE3 /* libRNRandomBytes.a in Frameworks */,
-				32B1BA7AECF04225BA2DCA78 /* libRNOS.a in Frameworks */,
-				B6A9BFBBAFDE4FB693996AD7 /* libTcpSockets.a in Frameworks */,
-				08F5232E00244E42A883F240 /* libUdpSockets.a in Frameworks */,
-				44DF939A5BE84EEB851B5829 /* libRealmReact.a in Frameworks */,
-				75EBBB23D6CC41B1A054D287 /* libc++.tbd in Frameworks */,
+				F4E54D9118E9C18260E1B2D4 /* Pods_rn_wallet.framework in Frameworks */,
+				EAA34BA6BE8C49AA8F016D7B /* libsqlite3.0.tbd in Frameworks */,
+				F5639A6AEE294B73BE0D9BD3 /* libSQLite.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -624,12 +606,17 @@
 		13B07FAE1A68108700A75B9A /* rn_wallet */ = {
 			isa = PBXGroup;
 			children = (
+				8005C16B2105AF750088B138 /* bundle */,
+				805C9D452101E877001C7A55 /* Sources */,
+				8050CF59210032020013BD0C /* BTKeystore.h */,
+				8050CF5A210032030013BD0C /* BTKeystore.m */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				80D637E4210028740006C499 /* rn_wallet-Bridging-Header.h */,
 			);
 			name = rn_wallet;
 			sourceTree = "<group>";
@@ -661,8 +648,8 @@
 			isa = PBXGroup;
 			children = (
 				2D16E6891FA4F8E400B85C8A /* libReact.a */,
-				D985D2F3AA7A47A1A78FF56A /* libz.tbd */,
-				A98CF2BEB8AB44FAB5E34F7A /* libc++.tbd */,
+				7DF037CDFBC9A04AA10B08F0 /* Pods_rn_wallet.framework */,
+				25C9FA0E9C2444708037FB1A /* libsqlite3.0.tbd */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -685,6 +672,42 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
+		7F3C25E3180FCAA7E1BF0EC0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				B7C14897D5CB57F3104A016E /* Pods-rn_wallet.debug.xcconfig */,
+				BCFB671D6F0DC5BCCCE51A03 /* Pods-rn_wallet.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		805C9D452101E877001C7A55 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				805C9D582101E882001C7A55 /* KeystoreKeyTool.h */,
+				805C9D592101E882001C7A55 /* KeystoreKeyTool.m */,
+				805C9D462101E877001C7A55 /* KeyStore.swift */,
+				805C9D472101E877001C7A55 /* Scrypt.swift */,
+				805C9D482101E877001C7A55 /* ScryptParams.swift */,
+				805C9D492101E877001C7A55 /* KeyStore.Error.swift */,
+				805C9D4A2101E877001C7A55 /* KeystoreKey.swift */,
+				805C9D4B2101E877001C7A55 /* Account.swift */,
+				805C9D4C2101E877001C7A55 /* KeystoreKeyHeader.swift */,
+				805C9D4D2101E877001C7A55 /* Wallet.swift */,
+				805C9D4E2101E877001C7A55 /* TrustKeystore.h */,
+				805C9D5C2101EA59001C7A55 /* KeystoreKeyCreatTool.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		806D372E20FF3FA7004E6E4B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				806D373220FF3FA7004E6E4B /* libSQLite.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		832341AE1AAA6A7D00B99B32 /* Libraries */ = {
 			isa = PBXGroup;
 			children = (
@@ -700,15 +723,11 @@
 				832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */,
 				00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */,
 				139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */,
-				678FACA2E6CA45388C1CF997 /* CodePush.xcodeproj */,
 				4C76DB07DD404739864A25AB /* RNCamera.xcodeproj */,
 				45FCDC5567F84F9CB4B4474C /* RNDeviceInfo.xcodeproj */,
 				FECFAB11A24A45029FF24726 /* RNI18n.xcodeproj */,
 				229C3A901EB14763BAF1C913 /* RNRandomBytes.xcodeproj */,
-				727CD53ADCD34624AFFAAAE0 /* RNOS.xcodeproj */,
-				F5DD8D0F9D9D40EF9D1A14D6 /* TcpSockets.xcodeproj */,
-				CD3C93687C904F679D448432 /* UdpSockets.xcodeproj */,
-				F86FBBBF1B194CB89C0E8114 /* RealmReact.xcodeproj */,
+				F18019A2376B402E886CC622 /* SQLite.xcodeproj */,
 			);
 			name = Libraries;
 			sourceTree = "<group>";
@@ -731,6 +750,7 @@
 				83CBBA001A601CBA00E9B192 /* Products */,
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				C166869420C90FCE0094F30B /* Recovered References */,
+				7F3C25E3180FCAA7E1BF0EC0 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -753,14 +773,6 @@
 			children = (
 				ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */,
 				2D16E6721FA4F8DC00B85C8A /* libRCTBlob-tvOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		C1276A3A20EB277300DD91E8 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C1276A3E20EB277300DD91E8 /* libRealmReact.a */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -792,34 +804,9 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		C154EFF420E48BFA00D9C40B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C154EFFC20E48BFA00D9C40B /* libRNOS.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		C154EFF620E48BFA00D9C40B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C154EFFF20E48BFA00D9C40B /* libTcpSockets.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		C154EFF820E48BFA00D9C40B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C154F00220E48BFA00D9C40B /* libUdpSockets.a */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		C166869420C90FCE0094F30B /* Recovered References */ = {
 			isa = PBXGroup;
 			children = (
-				D26A7F281F094CC383983AE8 /* libCodePush.a */,
 				5382A1238C3E48A6876879D2 /* libRNCamera.a */,
 				DFC632DB8A2144B797ABF3E0 /* libRNDeviceInfo.a */,
 				99396D9558EB479CAAA2E228 /* libRNI18n.a */,
@@ -830,18 +817,9 @@
 				8B3406C70E4540AF898B11FB /* libRNOS.a */,
 				35D630AB41F049B2BDE7AF95 /* libTcpSockets.a */,
 				A17362CF2F8A4B15A109F11A /* libUdpSockets.a */,
-				649994E58FB84F9AB39E21EB /* libRealmReact.a */,
+				41DBE4E596414D67901431C1 /* libSQLite.a */,
 			);
 			name = "Recovered References";
-			sourceTree = "<group>";
-		};
-		C16686BA20C90FCE0094F30B /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				C16686BF20C90FCE0094F30B /* libCodePush.a */,
-				C16686C120C90FCE0094F30B /* libCodePush.a */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		C19D147520D8DB31007A4F29 /* Products */ = {
@@ -877,10 +855,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "rn_wallet" */;
 			buildPhases = (
+				5FE56EAB4B397A862D917DFE /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
 				13B07F8C1A680F5B00A75B9A /* Frameworks */,
 				13B07F8E1A680F5B00A75B9A /* Resources */,
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
+				152BBC0A539C0253C7BC5655 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -943,6 +923,8 @@
 					};
 					13B07F861A680F5B00A75B9A = {
 						DevelopmentTeam = WF4UH4978D;
+						LastSwiftMigration = 940;
+						ProvisioningStyle = Manual;
 					};
 					2D02E47A1E0B4A5D006451C7 = {
 						CreatedOnToolsVersion = 8.2.1;
@@ -969,10 +951,6 @@
 			productRefGroup = 83CBBA001A601CBA00E9B192 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
-				{
-					ProductGroup = C16686BA20C90FCE0094F30B /* Products */;
-					ProjectRef = 678FACA2E6CA45388C1CF997 /* CodePush.xcodeproj */;
-				},
 				{
 					ProductGroup = 00C302A81ABCB8CE00DB3ED1 /* Products */;
 					ProjectRef = 00C302A71ABCB8CE00DB3ED1 /* RCTActionSheet.xcodeproj */;
@@ -1022,10 +1000,6 @@
 					ProjectRef = 146833FF1AC3E56700842450 /* React.xcodeproj */;
 				},
 				{
-					ProductGroup = C1276A3A20EB277300DD91E8 /* Products */;
-					ProjectRef = F86FBBBF1B194CB89C0E8114 /* RealmReact.xcodeproj */;
-				},
-				{
 					ProductGroup = C19D147520D8DB31007A4F29 /* Products */;
 					ProjectRef = 4C76DB07DD404739864A25AB /* RNCamera.xcodeproj */;
 				},
@@ -1038,20 +1012,12 @@
 					ProjectRef = FECFAB11A24A45029FF24726 /* RNI18n.xcodeproj */;
 				},
 				{
-					ProductGroup = C154EFF420E48BFA00D9C40B /* Products */;
-					ProjectRef = 727CD53ADCD34624AFFAAAE0 /* RNOS.xcodeproj */;
-				},
-				{
 					ProductGroup = C13A2C8B20DCA24B00D364CA /* Products */;
 					ProjectRef = 229C3A901EB14763BAF1C913 /* RNRandomBytes.xcodeproj */;
 				},
 				{
-					ProductGroup = C154EFF620E48BFA00D9C40B /* Products */;
-					ProjectRef = F5DD8D0F9D9D40EF9D1A14D6 /* TcpSockets.xcodeproj */;
-				},
-				{
-					ProductGroup = C154EFF820E48BFA00D9C40B /* Products */;
-					ProjectRef = CD3C93687C904F679D448432 /* UdpSockets.xcodeproj */;
+					ProductGroup = 806D372E20FF3FA7004E6E4B /* Products */;
+					ProjectRef = F18019A2376B402E886CC622 /* SQLite.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1310,6 +1276,13 @@
 			remoteRef = 78C398B81ACF4ADC00677621 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		806D373220FF3FA7004E6E4B /* libSQLite.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libSQLite.a;
+			remoteRef = 806D373120FF3FA7004E6E4B /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 		832341B51AAA6A8300B99B32 /* libRCTText.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1322,13 +1295,6 @@
 			fileType = archive.ar;
 			path = libRCTBlob.a;
 			remoteRef = ADBDB9261DFEBF0700ED6528 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C1276A3E20EB277300DD91E8 /* libRealmReact.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRealmReact.a;
-			remoteRef = C1276A3D20EB277300DD91E8 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
 		C13A2C4620DC9FF800D364CA /* libRNDeviceInfo.a */ = {
@@ -1373,41 +1339,6 @@
 			remoteRef = C13A2C9120DCA24B00D364CA /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
-		C154EFFC20E48BFA00D9C40B /* libRNOS.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libRNOS.a;
-			remoteRef = C154EFFB20E48BFA00D9C40B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C154EFFF20E48BFA00D9C40B /* libTcpSockets.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libTcpSockets.a;
-			remoteRef = C154EFFE20E48BFA00D9C40B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C154F00220E48BFA00D9C40B /* libUdpSockets.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libUdpSockets.a;
-			remoteRef = C154F00120E48BFA00D9C40B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C16686BF20C90FCE0094F30B /* libCodePush.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libCodePush.a;
-			remoteRef = C16686BE20C90FCE0094F30B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		C16686C120C90FCE0094F30B /* libCodePush.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libCodePush.a;
-			remoteRef = C16686C020C90FCE0094F30B /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		C19D147920D8DB31007A4F29 /* libRNCamera.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1430,6 +1361,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
+				8005C1992105AF750088B138 /* bundle in Resources */,
 				13B07FBD1A68108700A75B9A /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1466,6 +1398,32 @@
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
 		};
+		152BBC0A539C0253C7BC5655 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-rn_wallet/Pods-rn_wallet-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BigInt/BigInt.framework",
+				"${BUILT_PRODUCTS_DIR}/CryptoSwift/CryptoSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SipHash/SipHash.framework",
+				"${BUILT_PRODUCTS_DIR}/TrezorCrypto/TrezorCrypto.framework",
+				"${BUILT_PRODUCTS_DIR}/TrustCore/TrustCore.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BigInt.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CryptoSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SipHash.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrezorCrypto.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/TrustCore.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-rn_wallet/Pods-rn_wallet-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1479,6 +1437,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "export NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh";
+		};
+		5FE56EAB4B397A862D917DFE /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-rn_wallet-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1495,8 +1471,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8050CF5B210032030013BD0C /* BTKeystore.m in Sources */,
+				805C9D5D2101EA59001C7A55 /* KeystoreKeyCreatTool.swift in Sources */,
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				805C9D512101E877001C7A55 /* ScryptParams.swift in Sources */,
+				805C9D562101E877001C7A55 /* Wallet.swift in Sources */,
+				805C9D532101E877001C7A55 /* KeystoreKey.swift in Sources */,
+				805C9D522101E877001C7A55 /* KeyStore.Error.swift in Sources */,
+				805C9D542101E877001C7A55 /* Account.swift in Sources */,
+				805C9D5B2101E882001C7A55 /* KeystoreKeyTool.m in Sources */,
+				805C9D502101E877001C7A55 /* Scrypt.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
+				805C9D552101E877001C7A55 /* KeystoreKeyHeader.swift in Sources */,
+				805C9D4F2101E877001C7A55 /* KeyStore.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1549,6 +1536,7 @@
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				DEVELOPMENT_TEAM = WF4UH4978D;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1564,24 +1552,13 @@
 					"$(SRCROOT)/../node_modules/react-native-os/ios",
 					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = rn_walletTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1596,6 +1573,7 @@
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = WF4UH4978D;
@@ -1608,24 +1586,13 @@
 					"$(SRCROOT)/../node_modules/react-native-os/ios",
 					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = rn_walletTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1639,11 +1606,20 @@
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B7C14897D5CB57F3104A016E /* Pods-rn_wallet.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer: Minghui Chen (CPLP7K3Y7J)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = WF4UH4978D;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HSEther",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
@@ -1653,27 +1629,46 @@
 					"$(SRCROOT)/../node_modules/react-native-os/ios",
 					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = rn_wallet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HSEther",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.bottos.wallet;
 				PRODUCT_NAME = rn_wallet;
+				PROVISIONING_PROFILE = "bf660a51-80bb-41a5-be75-586cb81cbc79";
+				PROVISIONING_PROFILE_SPECIFIER = BottosTest;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/yuanjunliang/Documents/workspace/ReactNative/wallet/ios/rn_wallet-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Debug;
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BCFB671D6F0DC5BCCCE51A03 /* Pods-rn_wallet.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Minghui Chen (WF4UH4978D)";
+				CODE_SIGN_STYLE = Manual;
 				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
 				DEVELOPMENT_TEAM = WF4UH4978D;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HSEther",
+				);
 				HEADER_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)/../node_modules/react-native-camera/ios/**",
@@ -1683,17 +1678,26 @@
 					"$(SRCROOT)/../node_modules/react-native-os/ios",
 					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = rn_wallet/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HSEther",
+				);
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
+				PRODUCT_BUNDLE_IDENTIFIER = org.bottos.wallet;
 				PRODUCT_NAME = rn_wallet;
+				PROVISIONING_PROFILE = "71158a03-4f65-4adc-9d76-adf0e1227aa4";
+				PROVISIONING_PROFILE_SPECIFIER = BottosWlletDIS;
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/yuanjunliang/Documents/workspace/ReactNative/wallet/ios/rn_wallet-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = Release;
@@ -1720,23 +1724,12 @@
 					"$(SRCROOT)/../node_modules/react-native-os/ios",
 					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = "rn_wallet-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1773,23 +1766,12 @@
 					"$(SRCROOT)/../node_modules/react-native-os/ios",
 					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = "rn_wallet-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1825,23 +1807,12 @@
 					"$(SRCROOT)/../node_modules/react-native-os/ios",
 					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = "rn_wallet-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (
@@ -1877,23 +1848,12 @@
 					"$(SRCROOT)/../node_modules/react-native-os/ios",
 					"$(SRCROOT)/../node_modules/react-native-tcp/ios/**",
 					"$(SRCROOT)/../node_modules/react-native-udp/ios/**",
-					"$(SRCROOT)/../node_modules/realm/src/**",
+					"$(SRCROOT)/../node_modules/react-native-sqlite-storage/src/ios",
 				);
 				INFOPLIST_FILE = "rn_wallet-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
-					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
 				OTHER_LDFLAGS = (

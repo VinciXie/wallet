@@ -5,11 +5,13 @@ import BTButton from '../../Component/BTButton'
 import {Actions} from 'react-native-router-flux'
 import BTCoinType from './BTCoinType'
 import BTPasswordInput from '../../Component/BTPasswordInput'
-import {Toast} from 'antd-mobile'
+import {Toast} from 'antd-mobile-rn'
 import {getBlockInfo} from '../../Common/BTCommonApi'
 import {transactionPack} from '../../lib/BTPackManager'
 import {messageSign} from '../../lib/BTSignManager'
 import {BTFetch} from '../../Common/BTFetch'
+import Locale from '../../locales/index'
+// const Locale = global.Locale
 
 const px2dp = global.px2dp
 const BTCrypto = global.BTCrypto
@@ -60,12 +62,12 @@ export default class BTTransaction extends PureComponent{
 
     async nextButtonClick(){
         if(this.state.to==''){
-            Toast.fail('请输入收款账户')
+            Toast.fail(Locale.t('Message_PlaceInputAcceptAccount'))
             return
         }
 
         if(Number(this.state.number)<=0){
-            Toast.fail('转账数量必须大于零')
+            Toast.fail(Locale.t('Message_NumberMustGreaterZero'))
             return
         }
 
@@ -74,7 +76,7 @@ export default class BTTransaction extends PureComponent{
 
      async commitButtonClick(){
         this.setState({showPasswordInput:false})
-        Toast.loading('正在转账，请稍等',10*1000)
+        Toast.loading(Locale.t('Message_IsTransfer'),10*1000)
         let blockInfo = await getBlockInfo()
 
         try{
@@ -93,9 +95,6 @@ export default class BTTransaction extends PureComponent{
                     "price": this.state.number * Math.pow(10,8),
                     "remark": "April's rent"
                 }
-    
-                console.log({did})
-    
                 let didBuf = transactionPack(did)
                 let fetchParam = {
                     "version": 1,
@@ -115,19 +114,19 @@ export default class BTTransaction extends PureComponent{
                 BTFetch(url,'POST',fetchParam).then(response=>{
                     console.log({response})
                     if(response && response.code==1){
-                        Toast.success('转账成功')
+                        Toast.success(Locale.t('Message_TransferSuccess'))
                         Actions.pop()
                     }else{
-                        Toast.fail('转账失败')
+                        Toast.fail(Locale.t('Message_TransferFailed'))
                     }
                     
                 }).catch(error=>{
                     console.log({error})
-                    Toast.fail('转账失败')
+                    Toast.fail(Locale.t('Message_TransferFailed'))
                 })
             },1000)
         }catch(error){
-            Toast.fail('转账失败')
+            Toast.fail(Locale.t('Message_TransferFailed'))
             console.log({error})
         }
     }
@@ -146,14 +145,14 @@ export default class BTTransaction extends PureComponent{
                     <TouchableOpacity onPress={()=>{Actions.pop()}}><Image source={require('../../Public/img/back_arr_black.png')} style={{width:px2dp(25),height:px2dp(12)}}/></TouchableOpacity>
                     <TouchableOpacity onPress={()=>{this.scanAccount()}}><Image source={require('../../Public/img/scaner_black.png')} style={{width:px2dp(32),height:px2dp(27)}}/></TouchableOpacity>
                 </View>
-                <Text style={{fontSize:24,marginTop:px2dp(12),marginLeft:px2dp(20)}}>转账</Text>
+                <Text style={{fontSize:24,marginTop:px2dp(12),marginLeft:px2dp(20)}}>{Locale.t('Transfer_Transaction')}</Text>
                 <View>
                     {/* <BTInputItem title="转账账户" color="black" showArr={true} lineStyle={{backgroundColor:'#E5E5E5'}} placeholder="dfsffdsf" arrPress={()=>{alert('arrorPress')}}/> */}
-                    <BTInputItem title="收款地址" onChangeText={(value)=>{this.setState({to:value})}} color="black" lineStyle={{backgroundColor:'#E5E5E5'}} placeholder="请输入收款账户地址"/>
-                    <BTInputItem title="转账数量" keyboardType="numeric" onChangeText={(value)=>{this.numberChange(value)}} color="black" lineStyle={{backgroundColor:'#E5E5E5'}} placeholder="请输入转账数量"/>
-                    <BTInputItem title="选择币种" editable={false} value={this.state.coinType} color="black" showArr={true} lineStyle={{backgroundColor:'#E5E5E5'}} placeholder="请选择币种" arrPress={()=>{this.setState({visible:true})}}/>
+                    <BTInputItem title={Locale.t('Transfer_Address')} onChangeText={(value)=>{this.setState({to:value})}} color="black" lineStyle={{backgroundColor:'#E5E5E5'}} placeholder="请输入收款账户地址"/>
+                    <BTInputItem title={Locale.t('Transfer_Count')} keyboardType="numeric" onChangeText={(value)=>{this.numberChange(value)}} color="black" lineStyle={{backgroundColor:'#E5E5E5'}} placeholder="请输入转账数量"/>
+                    <BTInputItem title={Locale.t('Transfer_CoinType')} editable={false} value={this.state.coinType} color="black" showArr={true} lineStyle={{backgroundColor:'#E5E5E5'}} placeholder="请选择币种" arrPress={()=>{this.setState({visible:true})}}/>
                 </View>
-                <BTButton title="下一步" style={styles.buttonStyle} onClick={()=>{this.nextButtonClick()}}/>
+                <BTButton title={Locale.t('Other_Next')} style={styles.buttonStyle} onClick={()=>{this.nextButtonClick()}}/>
             </View>
         )
     }

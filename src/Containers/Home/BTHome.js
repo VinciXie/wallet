@@ -1,11 +1,11 @@
 import React, {PureComponent} from 'react'
 import {View,Text,StyleSheet,FlatList,ScrollView,Image} from 'react-native'
-import locale from '../../locals/index'
-import {Button,Carousel,WingBlank,Toast} from 'antd-mobile'
+import {Button,Carousel,WingBlank,Toast} from 'antd-mobile-rn'
 import BTCard from './BTCard'
 import BTItemView from './subviews/BTItemView'
 import {BTFetch} from '../../Common/BTFetch'
-import {findAccounts,findAccount} from '../../DB/AccountDB'
+import Locale from '../../locales/index'
+const DB = global.DB
 const px2dp = global.px2dp
 const Storage = global.Storage
 
@@ -24,7 +24,7 @@ export default class BTHome extends PureComponent{
     }
 
     async getBTOPrice(){
-        Toast.loading('正在获取资产价格',10*1000)
+        Toast.loading(Locale.t('Message_OnLoadingPrice'),10*1000)
         let isSuccess = false
         let usdt_cny = 'https://data.gateio.io/api2/1/ticker/usdt_cny'
         let bto_usdt = 'https://data.gateio.io/api2/1/ticker/bto_usdt'
@@ -37,26 +37,25 @@ export default class BTHome extends PureComponent{
             this.setState({bto_usdt_price,usdt_cny_price})
             Toast.hide()
         }catch(error){
-            Toast.fail('获取价格失败')
+            Toast.fail(Locale.t('Message_GetPriceFailed'))
             console.log(error)
         }
         return isSuccess
     }
 
     async getCount(account){
-        Toast.loading('正在获取资产价格',10*1000)
+        Toast.loading(Locale.t('Message_OnLoadingPrice'),10*1000)
         try{
             let Account = await Storage.load({key:'account'})
             let price=  await Storage.load({key:'price'})
-            if(Account){
-                account = account || Account.account
+            account = account || Account.account
+            if(account){
                 let url = '/user/GetBalance'
                 let params = {
                     username:account
                 }
 
                 let res = await BTFetch(url,'POST',params)
-                console.log({res})
                 Toast.hide()
                 if(res && res.code==1){
                     let data = res.data
@@ -73,11 +72,11 @@ export default class BTHome extends PureComponent{
                         account
                     })
                 }else{
-                    Toast.fail('资产数据请求失败')
+                    Toast.fail(Locale.t('Message_GetAssetFailed'))
                 }
             }
         }catch(error){
-            Toast.fail('获取资产失败')
+            Toast.fail(Locale.t('Message_GetAssetFailed'))
             console.log({error})
         }
     }
@@ -87,17 +86,12 @@ export default class BTHome extends PureComponent{
         await this.getCount()
     }
 
-    changeLocale(){
-        locale.locale = 'en'
-        this.forceUpdate()
-    }
-
     itemView(item,index){
         let price = {
             usdt_cny_price:this.state.usdt_cny_price,
             bto_usdt_price:this.state.bto_usdt_price
         }
-        let headView = <View key={index} style={[styles.itemViewStyle,{borderTopLeftRadius:25,borderTopRightRadius:25,paddingTop:25,paddingLeft:25}]}><Text style={{fontSize:25}}>资产详情</Text></View>
+        let headView = <View key={index} style={[styles.itemViewStyle,{borderTopLeftRadius:25,borderTopRightRadius:25,paddingTop:25,paddingLeft:25}]}><Text style={{fontSize:25}}>{Locale.t('Home_AssetDetail')}</Text></View>
         let resItem = headView
         let leng = this.state.data.length - 1
         if(index==0){
@@ -117,14 +111,14 @@ export default class BTHome extends PureComponent{
         let data = this.state.data
         return(
             <View style={{flex:1,paddingBottom:px2dp(20),backgroundColor:'white'}}>
-                <Text style={{marginTop:px2dp(45),marginLeft:(20),fontSize:24,fontWeight:'bold'}}>{this.state.account}</Text>
-                <FlatList
-                    automaticallyAdjustContentInsets={false} // 去掉顶部空白
-                    style={{flex:1,backgroundColor:'#F5F6FA'}}
-                    data={data}
-                    renderItem={({item,index})=>this.itemView(item,index)}
-                    ListHeaderComponent={<HeaderCard {...this.state} selected={this.props.selected} changeAccount={(account)=>{this.getCount(account),this.setState({account})}}/>}
-                />
+                    <Text style={{marginTop:px2dp(45),marginLeft:(20),fontSize:24,fontWeight:'bold'}}>{this.state.account}</Text>
+                    <FlatList
+                        automaticallyAdjustContentInsets={false} // 去掉顶部空白
+                        style={{flex:1,backgroundColor:'#F5F6FA'}}
+                        data={data}
+                        renderItem={({item,index})=>this.itemView(item,index)}
+                        ListHeaderComponent={<HeaderCard {...this.state} selected={this.props.selected} changeAccount={(account)=>{this.getCount(account),this.setState({account})}}/>}
+                    />
             </View>
         )
     }
@@ -140,41 +134,51 @@ class HeaderCard extends PureComponent{
     }
 
 
-    async componentDidMount(){
-        await this.findAccounts()
+    componentDidMount(){
+        this.findAccounts()
     }
 
-    async componentWillReceiveProps(){
-        await this.findAccounts()
+    componentWillReceiveProps(){
+        this.findAccounts()
     }
 
-    async findAccounts(){
-        let accounts = await findAccounts()
-        if(accounts.length>0){
-            this.setState({accounts})
-        }else{
-            try{
-                let account = await Storage.load({key:'account'})
-                this.setState({accounts:[account]})
-            }catch(error){
-                console.log(error)
-            }
-        }
-    }
-
-    async chengeAccount(nextAccount){
-        let accountArr = await findAccounts(nextAccount+'')
-        if(accountArr.length>0){
-            let account = accountArr[0]
-            this.props.changeAccount(account.account)
-            Storage.save({key:'account',data:{
-                account:account.account,
-                data:{
-                    keystore:account.keystore,
-                    privateKey:account.privateKey
+    findAccounts(){
+        let accounts = []
+        DB.findAccounts('',async(tx,response)=>{
+            let len = response.rows.length
+            if(len>0){
+                for(let i = 0;i<len;i++){
+                    let row = response.rows.item(i)
+                    accounts.push(row)
                 }
-            }})
-        }
+                this.setState({accounts})
+            }else{
+                try{
+                    let account = await Storage.load({key:'account'})
+                    this.setState({accounts:[account]})
+                }catch(error){
+                    console.log(error)
+                }
+            }
+        })
+    }
+
+    chengeAccount(nextAccount){
+        DB.findAccounts(nextAccount,async (tx,response)=>{
+            let len = response.rows.length
+            if(len>0){
+                let account = response.rows.item(0)
+                
+                await Storage.save({key:'account',data:{
+                    account:account.account,
+                    data:{
+                        keystore:account.keystore,
+                        // privateKey:account.privateKey
+                    }
+                }})
+                this.props.changeAccount(account.account)
+            }
+        })
     }
 
     render(){

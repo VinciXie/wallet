@@ -1,7 +1,6 @@
 package com.rn_wallet;
 
 import com.facebook.react.ReactActivity;
-import io.realm.react.RealmReactPackage;
 import com.microsoft.codepush.react.CodePush;
 
 public class MainActivity extends ReactActivity {

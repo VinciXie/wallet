@@ -1,6 +1,9 @@
 import React,{PureComponent} from 'react'
 import {View,Text,Image,TouchableOpacity} from 'react-native'
 import BTDivView from '../../../Component/BTDivView'
+import Locale from '../../../locales/index'
+import Storage from '../../../DB/Storage'
+import {Actions} from 'react-native-router-flux'
 
 const px2dp = global.px2dp
 
@@ -9,8 +12,27 @@ export default class BTChangeLanguage extends PureComponent{
         super(props)
 
         this.state = {
-            selected:'zh'
+            selected:'zh-Hans-US'
         }
+    }
+
+    async componentDidMount(){
+        console.log({props:this.props})
+        let locale = await Storage.load({key:'locale'})
+        this.setState({selected:locale.locale})
+    }
+
+    changeLanguage(language){
+        this.setState({selected:language})
+        Locale.locale = language
+        Storage.save({key:'locale',data:{
+            locale:language
+        }})
+        // this.forceUpdate()
+    }
+
+    componentWillUnmount(){
+        Actions.replace('home')
     }
 
     render(){
@@ -19,9 +41,8 @@ export default class BTChangeLanguage extends PureComponent{
                 <View style={{flex:1,marginTop:px2dp(64),padding:px2dp(20),backgroundColor:'white'}}>
                     <Text style={{fontSize:24}}>语言</Text>
                     <BTDivView style={{marginTop:px2dp(20)}}/>
-
-                    <CellItem title="简体中文" selected={this.state.selected == 'zh'} onPress={()=>this.setState({selected:'zh'})}/>
-                    <CellItem title="English" selected={this.state.selected == 'en'} onPress={()=>this.setState({selected:'en'})}/>
+                    <CellItem title="简体中文" selected={this.state.selected == 'zh-Hans-US'} onPress={()=>this.changeLanguage('zh-Hans-US')}/>
+                    <CellItem title="English" selected={this.state.selected == 'en'} onPress={()=>this.changeLanguage('en')}/>
                     
                 </View>
             </View>

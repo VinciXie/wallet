@@ -1,5 +1,4 @@
 <resources>
 
-    <string moduleConfig="true" name="reactNativeCodePush_androidDeploymentKey">c3OflRAoXSTshjISP4_VcYYmx4GBca7483fd-9e7e-4e3a-83dc-1a8209142b87</string>
     <string name="app_name">rn_wallet</string>
 </resources>

@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {StyleSheet, View} from 'react-native';
 import QRscanner from './QRScanner'
 import {Actions} from 'react-native-router-flux'
-import {Toast} from 'antd-mobile'
+import {Toast} from 'antd-mobile-rn'
 
 export default class Scanner extends Component {
   constructor(props) {

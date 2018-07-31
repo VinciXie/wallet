@@ -1,6 +1,6 @@
 import React,{PureComponent} from 'react'
 import {StyleSheet,Text,Image} from 'react-native'
-import {Button} from 'antd-mobile'
+import {Button} from 'antd-mobile-rn'
 
 export default class BTButton extends PureComponent{
     constructor(props){

@@ -1,6 +1,8 @@
 import React,{PureComponent} from 'react'
 import {View,StyleSheet,FlatList,Text,TouchableOpacity,Image,ImageBackground,Modal} from 'react-native'
 import { Actions } from 'react-native-router-flux';
+import Locale from '../../locales/index'
+// const Locale = global.Locale
 const px2dp = global.px2dp
 
 const COIN_TYPES =  [
@@ -28,7 +30,10 @@ export default class BTCoinType extends PureComponent{
                     <TouchableOpacity style={styles.backImageStyle} onPress={()=>{this.props.onPress(COIN_TYPES[this.state.selected].name)}}>
                         <Image source={require('../../Public/img/back_arr_black.png')} style={{width:px2dp(23),height:px2dp(10)}}/>
                     </TouchableOpacity>
-                    <Text style={{fontSize:18}}>选择币种</Text>
+                    <Text style={{fontSize:18}}>{Locale.t('Transfer_CoinType')}</Text>
+                    {/* <TouchableOpacity onPress={()=>{this.props.onPress(COIN_TYPES[this.state.selected].name)}}>
+                        <Text style={{marginRight:20}}>确定</Text>
+                    </TouchableOpacity> */}
                     <View></View>
                 </View>
                 <View style={{backgroundColor:'#CFCFCF',height:0.5}}></View>

@@ -1,12 +1,13 @@
 import React,{PureComponent} from 'react'
 import {View,Text,TouchableOpacity,Clipboard} from 'react-native'
-import {TextareaItem,Toast} from 'antd-mobile'
+import {TextareaItem,Toast} from 'antd-mobile-rn'
 import BTInputItem from '../../Component/BTInputItem'
 import BTButton from '../../Component/BTButton'
 import {Actions} from 'react-native-router-flux'
-import {createAccount} from '../../DB/AccountDB'
+import DB from '../../DB/DB'
+import Locale from '../../locales/index'
 const BTCrypto = global.BTCrypto
-const Kesytore = BTCrypto.keystore
+// const Kesytore = BTCrypto.keystore
 const Storage = global.Storage
 
 const px2dp = global.px2dp
@@ -23,7 +24,7 @@ export default class BTLogin extends PureComponent{
 
     loginClick(){
         if(this.state.keystore == ''){
-            Toast.fail('请粘贴keystore')
+            Toast.fail('请输入keystore')
             return
         }
         if(this.state.password == ''){
@@ -33,26 +34,70 @@ export default class BTLogin extends PureComponent{
         Toast.loading("正在登录",5000)
         setTimeout(async()=>{
             let keystore = JSON.parse(this.state.keystore)
-            try{
-                let privateKey = Kesytore.recover(this.state.password,keystore)
-                let accountInfo = {account:keystore.account,keystore:this.state.keystore}
-                createAccount(accountInfo)
-                Storage.save({key:'account',data:{
-                    account:keystore.account,
-                    data:{
-                        keystore:this.state.keystore,
-                        privateKey:BTCrypto.buf2hex(privateKey)
+                BTCrypto.recovePrivatekeyWithKeystore(this.state.keystore,this.state.password,(error,privateKey)=>{
+                    if(error){
+                        Toast.fail('keystore与密码不匹配')
+                        return
                     }
-                }})
-                if(privateKey){
-                    Toast.success("登录成功")
-                    Actions.reset('home')
-                }
-            }catch(error){
-                Toast.fail('keystore与密码不匹配')
-            }
+                    let accountInfo = {account:keystore.account,keystore:this.state.keystore}
+                    console.log({accountInfo})
+                    DB.createAccount(accountInfo,(tx,results)=>{
+                        console.log({tr,results})
+                    })
+                    Storage.save({key:'account',data:{
+                        account:keystore.account,
+                        data:{
+                            keystore:this.state.keystore,
+                            // privateKey
+                        }
+                    }})
+                    console.log({privateKey})
+                    if(privateKey){
+                        Toast.success("登录成功")
+                        Actions.reset('home')
+                    }
+                })
         },1000)
     }
+
+    // loginClick1(){
+    //     if(this.state.keystore == ''){
+    //         Toast.fail('请粘贴keystore')
+    //         return
+    //     }
+    //     if(this.state.password == ''){
+    //         Toast.fail('请输入密码')
+    //         return
+    //     }
+    //     Toast.loading("正在登录",5000)
+    //     setTimeout(async()=>{
+    //         let keystore = JSON.parse(this.state.keystore)
+    //         console.log({keystore,Kesytore})
+    //         try{
+    //             let privateKey = Kesytore.recover(this.state.password,keystore)
+    //             let accountInfo = {account:keystore.account,keystore:this.state.keystore}
+    //             console.log({accountInfo})
+    //             DB.createAccount(accountInfo,(tx,results)=>{
+    //                 console.log({tr,results})
+    //             })
+    //             Storage.save({key:'account',data:{
+    //                 account:keystore.account,
+    //                 data:{
+    //                     keystore:this.state.keystore,
+    //                     privateKey:BTCrypto.buf2hex(privateKey)
+    //                 }
+    //             }})
+    //             console.log({privateKey})
+    //             if(privateKey){
+    //                 Toast.success("登录成功")
+    //                 Actions.reset('home')
+    //             }
+    //         }catch(error){
+    //             console.log({error})
+    //             Toast.fail('keystore与密码不匹配')
+    //         }
+    //     },1000)
+    // }
 
     async parseKeystore(){
         let keystore = await Clipboard.getString();
@@ -62,7 +107,7 @@ export default class BTLogin extends PureComponent{
     render(){
         return(
             <View style={{flex:1,backgroundColor:'white'}}>
-                <Text style={{marginTop:px2dp(12+44),fontSize:24}}>导入Keystore</Text>
+                <Text style={{marginTop:px2dp(12+44),marginLeft:px2dp(20),fontSize:24}}>导入Keystore</Text>
                 <TextareaItem style={{width:px2dp(350),height:px2dp(113),marginTop:px2dp(23),alignSelf:'center',borderWidth:px2dp(1),borderColor:'#EBEBEB'}} rows={5} placeholder="请先复制keystore到粘贴板" value={this.state.keystore}></TextareaItem>
                 <TouchableOpacity onPress={()=>{this.parseKeystore()}}>
                     <Text style={{marginTop:px2dp(7),alignSelf:'center',color:'#007AFF'}}>粘贴keystore</Text>

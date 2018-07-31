@@ -10,20 +10,20 @@ export default class BTItemView extends PureComponent{
         let data = this.props.data
         let price = this.props.price
         let coinPrice = data.token_type == 'BTO' ?  price.bto_usdt_price : 0      
-        // let coinPrice = price.bto_usdt_price 
         let usdtP = coinPrice * data.value / Math.pow(10,8)
         let cnyP = usdtP * price.usdt_cny_price
+        let coinIcon = data.token_type == 'BTO' ? require('../../../Public/img/bto.png') : require('../../../Public/img/dto.png')
         return(
             <View style={[styles.itemViewStyle,this.props.style]}>
                 <View style={{flexDirection:'row',alignItems:'center'}}>
-                    <Image source={require('../../../Public/img/bto.png')} style={styles.iconStyle}/>
+                    <Image source={coinIcon} style={styles.iconStyle}/>
                     <View style={{width:global.px2dp(138)}}>
                         <Text style={{color:'#007AFF',textAlign:'left'}}>{this.props.data.token_type}</Text>
-                        {/* <Text style={{color:'#AFAFAF'}} numberOfLines={1}>{this.props.data.des || ''}</Text> */}
                     </View>
                 </View>
                 <View style={{marginRight:px2dp(20)}}>
-                    <Text>${usdtP.toFixed(2)}</Text>
+                    {/* <Text>${usdtP.toFixed(2)}</Text> */}
+                    <Text>{data.value}</Text>
                     <Text style={{color:'#AFAFAF'}}>≈￥{cnyP.toFixed(2)}</Text>
                 </View>
             </View>

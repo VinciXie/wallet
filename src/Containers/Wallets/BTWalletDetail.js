@@ -4,12 +4,15 @@ import BTDivView from '../../Component/BTDivView'
 import BTButton from '../../Component/BTButton'
 import BTWalletCard from './BTWalletCard'
 import {BTFetch} from '../../Common/BTFetch'
-import {findAccounts,removeAccount} from '../../DB/AccountDB'
-import {Toast} from 'antd-mobile'
+import Locale from '../../locales/index'
+import {Toast} from 'antd-mobile-rn'
 import BTPasswordInput from '../../Component/BTPasswordInput'
+import { Actions } from '../../../node_modules/react-native-router-flux';
 const Storage = global.Storage
 const BTCrypto = global.BTCrypto
 const Keystore = BTCrypto.keystore
+const DB = global.DB
+// const Locale = global.Locale
 
 const px2dp = global.px2dp
 
@@ -24,83 +27,99 @@ export default class BTWalletDetail extends PureComponent{
             showPasswordInput:false
         }
     }
-    
-    async componentDidMount(){
+
+    componentWillMount(){
         let account = this.props.account
         let keystore = ''
-        let Accounts =  await findAccounts(account)
-        if(Accounts.length > 0){
-            let accountInfo = Accounts[0]
-            keystore = accountInfo.keystore
-        }
-        try{
-            let price = await Storage.load({key:'price'})
-            let url = '/user/GetBalance'
-            let params = {
-                username:account
+        DB.findAccounts(account,async(tx,response)=>{
+            let len = response.rows.length
+            if(len>0){
+                let accountInfo = response.rows.item(0)
+                keystore = accountInfo.keystore
             }
-            let res = await BTFetch(url,'POST',params)
-            if(res && res.code==1){
-                let data = res.data
-                let totalCount = 0
-                data.forEach(item => {
-                    if(item.token_type=='BTO'){
-                        totalCount = item.value / Math.pow(10,8) * price.bto_usdt_price * price.usdt_cny_price
-                    }
-                })
-                this.setState({totalCount,account,keystore})
-            }else{
-                Toast.fail('获取账户数量失败')
+            try{
+                let price = await Storage.load({key:'price'})
+                let url = '/user/GetBalance'
+                let params = {
+                    username:account
+                }
+                let res = await BTFetch(url,'POST',params)
+                if(res && res.code==1){
+                    let data = res.data
+                    let totalCount = 0
+                    data.forEach(item => {
+                        if(item.token_type=='BTO'){
+                            totalCount = item.value / Math.pow(10,8) * price.bto_usdt_price * price.usdt_cny_price
+                        }
+                    })
+                    this.setState({totalCount,account,keystore})
+                }else{
+                    Toast.fail(Locale.t('Message_GetAssetFailed'))
+                    totalCount = '?'
+                    this.setState({totalCount,account,keystore})
+                }
+            }catch(error){
+                Toast.fail(Locale.t('Message_GetAssetFailed'))
                 totalCount = '?'
                 this.setState({totalCount,account,keystore})
             }
-        }catch(error){
-            Toast.fail('获取账户数量失败')
-            totalCount = '?'
-            this.setState({totalCount,account,keystore})
-        }
-
+        })
     }
-
+    
     copyKeystore(){
         Clipboard.setString(this.state.keystore)
     }
 
     async removeKeystore(){
-        Alert.alert('警告','删除前请备份您的keystore文件，一旦丢失将无法找回',[
-            {text:'取消',onPress:()=>{}},
-            {text:'确定',onPress:()=>{this.setState({showPasswordInput:true})}}
+        Alert.alert(Locale.t('Message_Alert'),Locale.t('Message_AlertDeleteKeystore'),[
+            {text:Locale.t('Message_Cancel'),onPress:()=>{}},
+            {text:Locale.t('Message_Sure'),onPress:()=>{this.setState({showPasswordInput:true})}}
         ])
     }
 
     async deleteAccount(){
         if(this.state.password==''){
-            Toast.fail('请输入密码')
+            Toast.fail(Locale.t('Regist_Password'))
             return
         }
+        let localAccountInfo =  await Storage.load({key:'account'})
+        console.log({localAccountInfo})
         this.setState({showPasswordInput:false})
-        Toast.loading('正在验证')
+        Toast.loading(Locale.t('Message_OnVerify'))
         setTimeout(async()=>{
+            console.log('setTimeout')
             try{
                 let privateKey = Keystore.recover(this.state.password,JSON.parse(this.state.keystore))
                 if(privateKey){
-                   let result = await removeAccount(this.state.account)
-                   if(result){
-                       Toast.success('删除成功')
-                   }else{
-                       Toast.fail('删除失败')
-                   }
+                    DB.remove(this.state.account,async(tx,response)=>{
+                        if(response){
+                            // 如果删除的是当前登录账户，要同步删除localStore中的账户
+                            if(this.state.account == localAccountInfo.account){
+                                try{
+                                    Storage.remove({key:'account'})
+                                    Toast.success(Locale.t('Message_DeleteSuccess'))
+                                    Actions.push('deleteSuccess')
+                                }catch(error){
+                                    Toast.fail(Locale.t('Message_DeleteFailed'))
+                                }
+                            }else{
+                                Toast.success(Locale.t('Message_DeleteSuccess'))
+                                Actions.push('deleteSuccess')
+                            }
+                        }else{
+                            Toast.fail(Locale.t('Message_DeleteFailed'))
+                        }
+                    })
                 }else{
-                    Toast.fail('密码错误')
+                    Toast.fail(Locale.t('Message_PasswordWrong'))
                 }
            }catch(error){
-               Toast.fail('删除失败')
+               Toast.fail(Locale.t('Message_DeleteFailed'))
            }
         },1000)
     }
 
     render(){
-        console.log({state:this.state})
         return(
             <View style={{flex:1,backgroundColor:'white',alignItems:'center',padding:px2dp(20)}}>
                 <Modal transparent={true} visible={this.state.showPasswordInput} style={{flex:1}}>
@@ -111,9 +130,9 @@ export default class BTWalletDetail extends PureComponent{
                 <TextInput editable={false} style={{width:px2dp(350),height:px2dp(113),backgroundColor:'#EBEBEB',fontSize:14,lineHeight:px2dp(20)}} multiline={true}>{this.state.keystore}</TextInput>
                 <BTNoteView style={{marginLeft:px2dp(20),marginRight:px2dp(20),marginBottom:px2dp(10)}}/>
                 <BTDivView/>
-                <Text style={{fontSize:14,color:'#007AFF',marginTop:px2dp(10)}}>请将Keystore妥善保管,任何人获得你的keystore内容都有可能操作你的账户资金</Text>
-                <BTButton title="复制Keystore至粘贴板" style={{marginTop:px2dp(20),borderRadius:px2dp(45),width:px2dp(333),height:px2dp(60)}} onClick={()=>{this.copyKeystore()}}/>
-                <TouchableOpacity onPress={()=>{this.removeKeystore()}}><Text style={{color:'#007AFF',marginTop:px2dp(20)}}>移除账户</Text></TouchableOpacity>
+                <Text style={{fontSize:14,color:'#007AFF',marginTop:px2dp(10)}}>{Locale.t('Message_NoteSaveKeystore')}</Text>
+                <BTButton title={Locale.t('Profile_CopyKeystore')} style={{marginTop:px2dp(20),borderRadius:px2dp(45),width:px2dp(333),height:px2dp(60)}} onClick={()=>{this.copyKeystore()}}/>
+                <TouchableOpacity onPress={()=>{this.removeKeystore()}}><Text style={{color:'#007AFF',marginTop:px2dp(20)}}>{Locale.t('Profile_RemoveAccount')}</Text></TouchableOpacity>
             </View>
         )
     }
@@ -128,7 +147,7 @@ class BTNoteView extends PureComponent{
         return(
             <View style={[{flexDirection:'row',alignItems:'center',justifyContent:'center'},this.props.style]}>
                 <Image source={require('../../Public/img/suggest.png')} style={{width:px2dp(35),height:px2dp(35),margin:px2dp(20)}}/>
-                <Text style={{fontSize:14,color:'#007AFF',marginTop:global.px2dp(20)}}>当APP被删后在其他手机上使用钱包时,需导入当前钱包备份私钥，否则可能永久丢失钱包资产，请务必备份好钱包，并妥善保管备份信息。</Text>
+                <Text style={{fontSize:14,color:'#007AFF',marginTop:global.px2dp(20)}}>{Locale.t('Message_NoteDeleteKeystore')}</Text>
             </View>
         )
     }

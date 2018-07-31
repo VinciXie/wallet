@@ -11,7 +11,7 @@ export default class BTNavLeftButton extends PureComponent{
     render(){
         let back_arr = this.props.backArr=='white' ? require('../Public/img/back_arr.png') : require('../Public/img/back_arr_black.png')
         return(
-            <TouchableOpacity onPress={()=>{Actions.pop()}} style={{width:64,height:44,justifyContent:"center",alignItems:'center'}}>
+            <TouchableOpacity onPress={()=>{this.props.onPress && this.props.onPress() || Actions.pop()}} style={{width:64,height:44,justifyContent:"center",alignItems:'center'}}>
                 <Image source={back_arr} style={{width:22,height:10}}/>
             </TouchableOpacity>
         )

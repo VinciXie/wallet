@@ -1,5 +1,6 @@
 const BTCrypto = global.BTCrypto
 const BTProto = BTCrypto.protobuf
+var Buffer = require('buffer/').Buffer
 
 export const messageSign = (msg,privateKey)=>{
     let message_pb = require('./message_pb')
