@@ -1,4 +1,4 @@
-# wallet of Bottos
+# Wallet of Bottos
 
 ### LoginView
 ![login](./pic/login.png)
